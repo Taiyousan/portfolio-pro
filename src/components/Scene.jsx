@@ -6,10 +6,12 @@ import {
   Environment,
   Html,
   Resize,
+  useGLTF,
 } from "@react-three/drei";
 import { Suspense, useRef } from "react";
 import { useAppContext } from "../context/store";
 import { TailSpin } from "react-loader-spinner";
+import models from "../data/models.json";
 
 // components
 import Model from "./Model";
@@ -51,10 +53,14 @@ export default function Scene() {
             </Html>
           }
         >
-          {/* <Model /> */}
-          <Cube />
+          {models.map((model, index) => (
+            index <= 4 && <Cube key={index} model={model} delay={index * 250} />
+          ))}
+
         </Suspense>
       </Center>
     </>
   );
 }
+
+useGLTF.preload("models/bbc.glb");

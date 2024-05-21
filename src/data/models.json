@@ -1,0 +1,35 @@
+[
+  {
+    "name": "bbc",
+    "positionX": -1.5,
+    "positionY": -0.2,
+    "scale": 0.7,
+    "scaleSelected": 3,
+    "groupPosition": [-1.5, 0, 0],
+    "groupRotation": [0, 0.5, 0]
+  },
+  {
+    "name": "resurection",
+    "positionX": 0,
+    "positionY": 0,
+    "scale": 0.001,
+    "scaleSelected": 0.005,
+    "groupPosition": [0, 0, -0.5],
+    "groupRotation": [0, 0, 0],
+    "viewerCameraPosition": [
+      0.08266112353934661, 0.4638090827669032, 3.5460239923074175
+    ]
+  },
+  {
+    "name": "tete_lauree_std",
+    "positionX": 1.5,
+    "positionY": 0,
+    "scale": 0.3,
+    "scaleSelected": 1.5,
+    "groupPosition": [1.5, 0, 0],
+    "groupRotation": [0, -0.5, 0],
+    "viewerCameraPosition": [
+      0.08266112353934661, 0.4638090827669032, 4.5460239923074175
+    ]
+  }
+]

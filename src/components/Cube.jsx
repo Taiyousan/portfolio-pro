@@ -9,9 +9,8 @@ import Model from "./Model";
 
 
 
-export default function Cube() {
-    let model = useGLTF(`models/cube.glb`);
-    const cube = useGLTF("models/cube.glb");
+export default function Cube(props) {
+    let model = useGLTF(`models/${props.model.name}.glb`); const cube = useGLTF("models/cube.glb");
 
 
     const [active, setActive] = useState(false);
@@ -67,7 +66,11 @@ export default function Cube() {
             // onPointerEnter={handleHover}
             // onPointerLeave={handleUnhover}
             />
-            <Model />
+            <primitive
+                object={model.scene}
+                scale={props.model.scale}
+                position-y={props.model.positionY}
+            />
         </animated.group>
     );
 }
