@@ -13,6 +13,7 @@ import { TailSpin } from "react-loader-spinner";
 
 // components
 import Model from "./Model";
+import Cube from "./Cube";
 
 export default function Scene() {
   const context = useAppContext();
@@ -50,7 +51,8 @@ export default function Scene() {
             </Html>
           }
         >
-          <Model />
+          {/* <Model /> */}
+          <Cube />
         </Suspense>
       </Center>
     </>
