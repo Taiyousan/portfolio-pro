@@ -15,7 +15,7 @@ export default function CanvasContent() {
           fov: 45,
           near: 0.1,
           far: 200,
-          position: [4, 2, 5],
+          position: [0, 0, 8],
         }}
       >
         <Scene />

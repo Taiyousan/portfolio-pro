@@ -55,7 +55,7 @@ export default function Cube(props) {
     });
 
     return (
-        <animated.group scale={scale}>
+        <animated.group scale={scale} position={props.groupPosition}>
             <animated.mesh
                 castShadow
                 receiveShadow
