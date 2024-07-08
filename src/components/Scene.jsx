@@ -22,14 +22,13 @@ export default function Scene() {
   const radius = 2;
 
   const calculatePosition = (index, total) => {
-    const angle = (2 * Math.PI / total) * index;
+    const angle = ((2 * Math.PI) / total) * index;
     const x = radius * Math.cos(angle);
     const y = radius * Math.sin(angle);
     return [x, y, 0];
   };
 
   useEffect(() => {
-
     const mouseMoveCamera = (e) => {
       const x = e.clientX - window.innerWidth / 2;
       const y = e.clientY - window.innerHeight / 2;
@@ -45,7 +44,7 @@ export default function Scene() {
 
         0,
         true
-      )
+      );
     };
 
     const mouseOutCamera = () => {
@@ -101,9 +100,15 @@ export default function Scene() {
             const groupPosition = calculatePosition(index, models.length);
             console.log("groupPosition", groupPosition);
 
-            return <Cube key={index} model={model} delay={index * 250} groupPosition={groupPosition} />;
+            return (
+              <Cube
+                key={index}
+                model={model}
+                delay={index * 250}
+                groupPosition={groupPosition}
+              />
+            );
           })}
-
         </Suspense>
       </Center>
     </>

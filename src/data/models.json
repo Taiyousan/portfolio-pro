@@ -1,68 +1,50 @@
 [
   {
     "name": "bbc",
-    "positionX": -1.5,
+    "positionX": 0,
     "positionY": -0.2,
+    "positionZ": 0,
     "scale": 0.7,
-    "groupPosition": [
-      0,
-      -1,
-      0
-    ]
+    "groupPosition": [0, -1, 0]
   },
   {
     "name": "resurection",
     "positionX": 0,
     "positionY": 0,
+    "positionZ": 0,
     "scale": 0.001,
-    "groupPosition": [
-      -1,
-      1,
-      0
-    ]
+    "groupPosition": [-1, 1, 0]
   },
   {
     "name": "tete_lauree_std",
-    "positionX": 1.5,
+    "positionX": 0,
     "positionY": 0,
+    "positionZ": 0,
     "scale": 0.3,
-    "groupPosition": [
-      -2,
-      1,
-      0
-    ]
+    "groupPosition": [-2, 1, 0]
   },
   {
-    "name": "tete_lauree_std",
-    "positionX": 1.5,
+    "name": "chaussure",
+    "positionX": 0,
     "positionY": 0,
+    "positionZ": 0,
     "scale": 0.3,
-    "groupPosition": [
-      1,
-      1,
-      0
-    ]
+    "groupPosition": [1, 1, 0]
   },
   {
-    "name": "tete_lauree_std",
-    "positionX": 1.5,
-    "positionY": 0,
-    "scale": 0.3,
-    "groupPosition": [
-      1,
-      1,
-      0
-    ]
+    "name": "boinaud",
+    "positionX": 0,
+    "positionY": -0.1,
+    "positionZ": 0,
+    "scale": 0.009,
+    "groupPosition": [1, 1, 0]
   },
   {
-    "name": "tete_lauree_std",
-    "positionX": 1.5,
-    "positionY": 0,
-    "scale": 0.3,
-    "groupPosition": [
-      1,
-      1,
-      0
-    ]
+    "name": "cetim",
+    "positionX": 0.1,
+    "positionY": -0.25,
+    "positionZ": 0,
+    "scale": 0.18,
+    "groupPosition": [1, 1, 0]
   }
 ]
