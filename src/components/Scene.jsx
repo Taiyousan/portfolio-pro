@@ -45,6 +45,7 @@ export default function Scene() {
         0,
         true
       );
+      context.setAllRotatingCubes(true);
     };
 
     const mouseOutCamera = () => {

@@ -8,13 +8,18 @@ import { useControls } from "leva";
 import Model from "./Model";
 import { useFrame } from "@react-three/fiber";
 
+import { useAppContext } from "../context/store";
+
 export default function Cube(props) {
   let model = useGLTF(`models/${props.model.name}.glb`);
   const cube = useGLTF("models/cube.glb");
+  const context = useAppContext();
 
   const cubeGroup = useRef();
 
   const [active, setActive] = useState(false);
+  const [isRotating, setIsRotating] = useState(true);
+  const [clicked, setClicked] = useState(false);
   const { scale } = useSpring({
     scale: active ? 1 : 0,
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
@@ -65,13 +70,51 @@ export default function Cube(props) {
     []
   );
 
+  // Store the initial rotation quaternion
+  const initialRotation = useMemo(() => new THREE.Quaternion(), []);
+
   useFrame(() => {
     if (cubeGroup.current) {
-      cubeGroup.current.rotation.x += rotationSpeeds.x;
-      cubeGroup.current.rotation.y += rotationSpeeds.y;
-      cubeGroup.current.rotation.z += rotationSpeeds.z;
+      if (context.allRotatingCubes) {
+        cubeGroup.current.rotation.x += rotationSpeeds.x;
+        cubeGroup.current.rotation.y += rotationSpeeds.y;
+        cubeGroup.current.rotation.z += rotationSpeeds.z;
+      } else if (!context.allRotatingCubes && clicked) {
+        // Interpolate rotation back to initial rotation
+        cubeGroup.current.quaternion.slerp(initialRotation, 0.1);
+      }
     }
   });
+
+  useEffect(() => {
+    console.log(scale);
+  }, [scale]);
+
+  const handleClick = () => {
+    recentrer();
+    focusOnCube();
+  };
+
+  const recentrer = () => {
+    // setIsRotating(false);
+    context.setAllRotatingCubes(false);
+  };
+
+  const focusOnCube = () => {
+    context.cameraControlsRef.current?.setPosition(
+      props.groupPosition[0],
+      props.groupPosition[1],
+      2,
+      true
+    );
+    context.cameraControlsRef.current?.setTarget(
+      props.groupPosition[0],
+      props.groupPosition[1],
+      props.groupPosition[2],
+      true
+    );
+  };
+
   return (
     <Float
       speed={1} // Animation speed, defaults to 1
@@ -92,7 +135,7 @@ export default function Cube(props) {
           geometry={cube.nodes.Cube.geometry}
           material={glassMaterial}
           scale={0.5}
-          // onClick={handleClick}
+          onClick={handleClick}
           // onPointerEnter={handleHover}
           // onPointerLeave={handleUnhover}
         />
