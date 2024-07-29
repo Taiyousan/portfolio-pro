@@ -87,10 +87,13 @@ export default function Cube(props) {
   });
 
   useEffect(() => {
-    console.log(scale);
-  }, [scale]);
+    if (context.allRotatingCubes) {
+      setClicked(false);
+    }
+  }, [context.allRotatingCubes]);
 
   const handleClick = () => {
+    setClicked(true);
     recentrer();
     focusOnCube();
   };

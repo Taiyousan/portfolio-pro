@@ -28,8 +28,8 @@ export default function Scene() {
     return [x, y, 0];
   };
 
-  useEffect(() => {
-    const mouseMoveCamera = (e) => {
+  const mouseMoveCamera = (e) => {
+    if (context.allRotatingCubes === true) {
       const x = e.clientX - window.innerWidth / 2;
       const y = e.clientY - window.innerHeight / 2;
       context.cameraControlsRef.current?.setPosition(
@@ -45,13 +45,15 @@ export default function Scene() {
         0,
         true
       );
-      context.setAllRotatingCubes(true);
-    };
+    }
+  };
 
-    const mouseOutCamera = () => {
-      context.resetCamera();
-    };
+  const mouseOutCamera = () => {
+    context.setAllRotatingCubes(true);
+    context.resetCamera();
+  };
 
+  useEffect(() => {
     // log mouse position on mouse move
     window.addEventListener("mousemove", mouseMoveCamera);
     window.addEventListener("mouseout", mouseOutCamera);
@@ -60,7 +62,7 @@ export default function Scene() {
       window.removeEventListener("mousemove", mouseMoveCamera);
       window.removeEventListener("mouseout", mouseOutCamera);
     };
-  }, []);
+  }, [context.allRotatingCubes]);
 
   return (
     <>
@@ -99,7 +101,7 @@ export default function Scene() {
             // if (index > 4) return null;
 
             const groupPosition = calculatePosition(index, models.length);
-            console.log("groupPosition", groupPosition);
+            // console.log("groupPosition", groupPosition);
 
             return (
               <Cube
