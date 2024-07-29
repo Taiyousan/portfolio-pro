@@ -27,10 +27,18 @@ export default function Cube(props) {
   const { positionY } = useSpring({
     positionY: active ? props.groupPosition[1] : -8,
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
-    onChange: (positionY) => {
-      if (props.model.name === "boinaud") {
-        console.log("positionY", positionY.value);
-      }
+    // onChange: (positionY) => {
+    //   if (props.model.name === "boinaud") {
+    //     console.log("positionY", positionY.value);
+    //   }
+    // },
+  });
+  const { glassOpacity } = useSpring({
+    value: !clicked ? 1 : 0,
+    config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
+    onChange: (glassOpacity) => {
+      glassMaterial.opacity = glassOpacity.value.value;
+      glassMaterial.needsUpdate = true;
     },
   });
 
@@ -114,9 +122,11 @@ export default function Cube(props) {
   }, [context.allRotatingCubes]);
 
   const handleClick = () => {
-    setClicked(true);
-    recentrer();
-    focusOnCube();
+    if (!clicked) {
+      setClicked(true);
+      recentrer();
+      focusOnCube();
+    }
   };
   const easeOutQuad = (t) => t * (2 - t);
 
@@ -184,7 +194,9 @@ export default function Cube(props) {
         position-x={props.groupPosition[0]}
         position-y={positionY}
         position-z={props.groupPosition[2]}
-        onPointerEnter={handleHover}
+        onPointerEnter={() => {
+          if (!clicked) handleHover();
+        }}
       >
         <animated.mesh
           castShadow
