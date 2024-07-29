@@ -16,3 +16,8 @@
         cursor: pointer;
     }
 }
+
+.bg {
+    position: absolute;
+    z-index: -2;
+}

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useAppContext } from "../context/store";
+import ParticlesBackground from "./ParticlesBackground";
 
 export default function Overlay() {
   const context = useAppContext();
@@ -12,8 +13,13 @@ export default function Overlay() {
   };
 
   return (
-    <div className="overlay">
-      <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} />
-    </div>
+    <>
+      <div className="bg">
+        <ParticlesBackground />
+      </div>
+      <div className="overlay">
+        <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} />
+      </div>
+    </>
   );
 }

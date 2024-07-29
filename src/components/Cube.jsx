@@ -74,9 +74,12 @@ export default function Cube(props) {
   // Génère des vitesses de rotation aléatoires une seule fois par cube
   const rotationSpeeds = useMemo(
     () => ({
-      x: (Math.random() - 0.5) * 0.01,
-      y: (Math.random() - 0.5) * 0.01,
-      z: (Math.random() - 0.5) * 0.01,
+      // x: (Math.random() - 0.5) * 0.01,
+      // y: (Math.random() - 0.5) * 0.01,
+      // z: (Math.random() - 0.5) * 0.01,
+      x: 0.005,
+      y: 0.005,
+      z: 0.005,
     }),
     []
   );
@@ -84,11 +87,13 @@ export default function Cube(props) {
   // Store the initial rotation quaternion
   const initialRotation = useMemo(() => new THREE.Quaternion(), []);
 
+  const [rotationSpeedFactor, setRotationSpeedFactor] = useState(1);
+
   useFrame(() => {
     if (cubeGroup.current) {
       if (context.allRotatingCubes) {
         cubeGroup.current.rotation.x += rotationSpeeds.x;
-        cubeGroup.current.rotation.y += rotationSpeeds.y;
+        cubeGroup.current.rotation.y += rotationSpeeds.y * rotationSpeedFactor;
         cubeGroup.current.rotation.z += rotationSpeeds.z;
       } else if (!context.allRotatingCubes && clicked) {
         // Interpolate rotation back to initial rotation
@@ -107,6 +112,36 @@ export default function Cube(props) {
     setClicked(true);
     recentrer();
     focusOnCube();
+  };
+  const easeOutQuad = (t) => t * (2 - t);
+
+  const handleHover = () => {
+    setRotationSpeedFactor(30);
+
+    // Déclenche la diminution progressive après un délai de 2 secondes
+    setTimeout(() => {
+      let start = null;
+      const duration = 500; // Durée de l'effet de ease
+
+      const animate = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+
+        // Utilisation d'une fonction d'interpolation pour une transition en douceur
+        const easedProgress = easeOutQuad(progress / duration);
+        const newSpeedFactor = 10 - 9 * easedProgress;
+
+        setRotationSpeedFactor(newSpeedFactor);
+
+        if (progress < duration) {
+          requestAnimationFrame(animate);
+        } else {
+          setRotationSpeedFactor(1); // Assurez-vous que la vitesse est ramenée à 1 à la fin
+        }
+      };
+
+      requestAnimationFrame(animate);
+    }, 500); // Délai avant de commencer la diminution progressive
   };
 
   const recentrer = () => {
@@ -144,6 +179,7 @@ export default function Cube(props) {
         position-x={props.groupPosition[0]}
         position-y={positionY}
         position-z={props.groupPosition[2]}
+        onPointerEnter={handleHover}
       >
         <animated.mesh
           castShadow
