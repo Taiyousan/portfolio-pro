@@ -25,7 +25,7 @@ export default function Cube(props) {
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
   });
   const { positionY } = useSpring({
-    positionY: active ? props.groupPosition[1] : -2,
+    positionY: active ? props.groupPosition[1] : -8,
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
     onChange: (positionY) => {
       if (props.model.name === "boinaud") {
@@ -105,6 +105,11 @@ export default function Cube(props) {
   useEffect(() => {
     if (context.allRotatingCubes) {
       setClicked(false);
+      setActive(true);
+    } else if (!context.allRotatingCubes && !clicked) {
+      setActive(false);
+    } else if (!context.allRotatingCubes && clicked) {
+      setActive(true);
     }
   }, [context.allRotatingCubes]);
 

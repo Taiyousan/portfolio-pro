@@ -14,9 +14,11 @@ export default function Overlay() {
 
   return (
     <>
-      <div className="bg">
-        <ParticlesBackground />
-      </div>
+      {context.allRotatingCubes && (
+        <div className="bg">
+          <ParticlesBackground />
+        </div>
+      )}
       <div className="overlay">
         <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} />
       </div>
