@@ -24,9 +24,20 @@ export default function Cube(props) {
     scale: active ? 1 : 0,
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
   });
+  const { positionY } = useSpring({
+    positionY: active ? props.groupPosition[1] : -2,
+    config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
+    onChange: (positionY) => {
+      if (props.model.name === "boinaud") {
+        console.log("positionY", positionY.value);
+      }
+    },
+  });
 
   useEffect(() => {
-    setActive(true);
+    setTimeout(() => {
+      setActive(true);
+    }, props.delay);
   }, []);
 
   const [
@@ -129,8 +140,10 @@ export default function Cube(props) {
     >
       <animated.group
         scale={scale}
-        position={props.groupPosition}
         ref={cubeGroup}
+        position-x={props.groupPosition[0]}
+        position-y={positionY}
+        position-z={props.groupPosition[2]}
       >
         <animated.mesh
           castShadow
