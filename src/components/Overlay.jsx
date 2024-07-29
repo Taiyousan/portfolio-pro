@@ -7,7 +7,8 @@ export default function Overlay() {
   const context = useAppContext();
 
   const handleClick = () => {
-    context.cameraControlsRef.current?.reset(true);
+    // context.cameraControlsRef.current?.reset(true);
+    context.setAllRotatingCubes(true);
   };
 
   return (

@@ -13,15 +13,27 @@ export function useAppContext() {
 export function AppContextProvider({ children }) {
   // refs
   const cameraControlsRef = useRef();
+  const [defaultCameraPosition, setDefaultCameraPosition] = useState([
+    0.1, 0.1, 8,
+  ]);
+  const [allRotatingCubes, setAllRotatingCubes] = useState(true);
 
   // states
 
   // effects
 
   // functions
+  const resetCamera = () => {
+    cameraControlsRef.current?.reset(true);
+  };
 
   const contextValues = {
     cameraControlsRef,
+    resetCamera,
+    defaultCameraPosition,
+    setDefaultCameraPosition,
+    allRotatingCubes,
+    setAllRotatingCubes,
   };
 
   return (
