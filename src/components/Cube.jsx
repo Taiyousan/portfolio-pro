@@ -126,6 +126,9 @@ export default function Cube(props) {
       setClicked(true);
       recentrer();
       focusOnCube();
+      let currentProject = props.model;
+      currentProject.focusGroupPosition = props.groupPosition;
+      context.setCurrentProject(currentProject);
     }
   };
   const easeOutQuad = (t) => t * (2 - t);

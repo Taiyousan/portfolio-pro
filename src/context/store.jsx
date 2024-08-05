@@ -19,12 +19,15 @@ export function AppContextProvider({ children }) {
   const [allRotatingCubes, setAllRotatingCubes] = useState(true);
 
   // states
+  const [currentProject, setCurrentProject] = useState(null);
 
   // effects
 
   // functions
   const resetCamera = () => {
     cameraControlsRef.current?.reset(true);
+
+    setCurrentProject(null);
   };
 
   const contextValues = {
@@ -34,6 +37,8 @@ export function AppContextProvider({ children }) {
     setDefaultCameraPosition,
     allRotatingCubes,
     setAllRotatingCubes,
+    currentProject,
+    setCurrentProject,
   };
 
   return (

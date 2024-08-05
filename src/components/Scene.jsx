@@ -16,6 +16,7 @@ import models from "../data/models.json";
 // components
 import Model from "./Model";
 import Cube from "./Cube";
+import Title from "./Title";
 
 export default function Scene() {
   const context = useAppContext();
@@ -97,6 +98,7 @@ export default function Scene() {
             </Html>
           }
         >
+          {context.currentProject && <Title />}
           {models.map((model, index) => {
             // if (index > 4) return null;
 
