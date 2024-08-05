@@ -17,6 +17,7 @@ import models from "../data/models.json";
 import Model from "./Model";
 import Cube from "./Cube";
 import Title from "./Title";
+import Thumb from "./Thumb";
 
 export default function Scene() {
   const context = useAppContext();
@@ -49,19 +50,12 @@ export default function Scene() {
     }
   };
 
-  const mouseOutCamera = () => {
-    context.setAllRotatingCubes(true);
-    context.resetCamera();
-  };
-
   useEffect(() => {
     // log mouse position on mouse move
     window.addEventListener("mousemove", mouseMoveCamera);
-    window.addEventListener("mouseout", mouseOutCamera);
 
     return () => {
       window.removeEventListener("mousemove", mouseMoveCamera);
-      window.removeEventListener("mouseout", mouseOutCamera);
     };
   }, [context.allRotatingCubes]);
 
@@ -98,7 +92,12 @@ export default function Scene() {
             </Html>
           }
         >
-          {context.currentProject && <Title />}
+          {context.currentProject && (
+            <>
+              <Title />
+              <Thumb />
+            </>
+          )}
           {models.map((model, index) => {
             // if (index > 4) return null;
 

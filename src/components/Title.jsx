@@ -4,10 +4,6 @@ import { useEffect } from "react";
 
 const Title = () => {
   const context = useAppContext();
-  useEffect(() => {
-    console.log("ok");
-  }, []);
-
   return (
     <Text
       color="black"

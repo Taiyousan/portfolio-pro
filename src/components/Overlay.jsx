@@ -19,7 +19,7 @@ export default function Overlay() {
           <ParticlesBackground />
         </div>
       )}
-      <div className="overlay">
+      <div className="overlay" onClick={context.outOfFocus}>
         <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} />
       </div>
     </>

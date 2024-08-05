@@ -2,3 +2,14 @@
     // modern font
     font-family: "Roboto", sans-serif;
 }
+
+.thumb-wrapper {
+    pointer-events: none;
+    .thumb {
+        outline: red solid 1px;
+        width: 500px;
+        height: 300px;
+        background-size: cover;
+        pointer-events: none;
+    }
+}
