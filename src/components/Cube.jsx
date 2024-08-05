@@ -24,6 +24,10 @@ export default function Cube(props) {
     scale: active ? 1 : 0,
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
   });
+  const { cubeScale } = useSpring({
+    cubeScale: !clicked ? 0.5 : 0,
+    config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
+  });
   const { positionY } = useSpring({
     positionY: active ? props.groupPosition[1] : -8,
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
@@ -206,7 +210,7 @@ export default function Cube(props) {
           receiveShadow
           geometry={cube.nodes.Cube.geometry}
           material={glassMaterial}
-          scale={0.5}
+          scale={cubeScale}
           onClick={handleClick}
           // onPointerEnter={handleHover}
           // onPointerLeave={handleUnhover}

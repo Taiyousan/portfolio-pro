@@ -13,8 +13,12 @@ const Title = () => {
       color="black"
       anchorX="center"
       anchorY="middle"
-      position={context.currentProject?.focusGroupPosition}
-      fontSize={0.5}
+      position={[
+        context.currentProject?.focusGroupPosition[0],
+        context.currentProject?.focusGroupPosition[1] - 0.7,
+        context.currentProject?.focusGroupPosition[2],
+      ]}
+      fontSize={0.18}
     >
       {context.currentProject?.name}
     </Text>
