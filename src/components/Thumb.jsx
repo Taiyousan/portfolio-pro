@@ -12,12 +12,11 @@ export default function Thumb() {
     >
       <Html
         position={[
-          context.currentProject?.focusGroupPosition[0],
-          context.currentProject?.focusGroupPosition[1] + 0.7,
+          context.currentProject?.focusGroupPosition[0] + 0.9,
+          context.currentProject?.focusGroupPosition[1] + 0.4,
           context.currentProject?.focusGroupPosition[2],
         ]}
         // occlude="blending"
-        style={{ pointerEvents: "none" }}
         wrapperClass="thumb-wrapper"
         transform
         scale={0.07}
@@ -28,7 +27,11 @@ export default function Thumb() {
           style={{
             backgroundImage: `url(img/thumbs/${context.currentProject.name}.png)`,
           }}
-        ></div>
+        >
+          <div className="visit">
+            <div className="btn-visit">Visiter</div>
+          </div>
+        </div>
       </Html>
     </Float>
   );
