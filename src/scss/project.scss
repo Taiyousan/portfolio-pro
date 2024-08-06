@@ -1,0 +1,22 @@
+.project {
+    color: #f0f0f0;
+    width: 500px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    .project-content {
+        opacity: 1;
+        width: 90%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 1em;
+        .project-title {
+            font-size: 2em;
+            font-family: "Roboto", sans-serif;
+        }
+    }
+}

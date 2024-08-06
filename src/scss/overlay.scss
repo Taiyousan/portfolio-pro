@@ -6,14 +6,16 @@
     height: 100%;
     pointer-events: none;
     z-index: 2;
+    z-index: 2000;
 
     .logo {
         position: absolute;
         margin: 2em;
-        width: 150px;
-        height: 150px;
+        width: 30px;
+        height: 30px;
         pointer-events: auto;
         cursor: pointer;
+        position: relative;
     }
 }
 
