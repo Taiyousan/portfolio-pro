@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useAppContext } from "../context/store";
 import ParticlesBackground from "./ParticlesBackground";
 
+import DissolveEffect from "./DissolveEffect";
+
 export default function Overlay() {
   const context = useAppContext();
 
@@ -22,6 +24,8 @@ export default function Overlay() {
       <div className="overlay" onClick={context.outOfFocus}>
         <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} />
       </div>
+
+      {context.currentProject && <DissolveEffect />}
     </>
   );
 }
