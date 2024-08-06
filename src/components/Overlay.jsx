@@ -23,7 +23,7 @@ export default function Overlay() {
         </div>
       )}
       <div className="overlay" onClick={context.outOfFocus}>
-        <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} />
+        {/* <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} /> */}
         {context.currentProject && <Project />}
       </div>
     </>

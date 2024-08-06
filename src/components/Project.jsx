@@ -11,12 +11,16 @@ export default function Project() {
       x: -500,
       ease: "bounce.out",
       duration: 1,
+      delay: 0.5,
     }); // <-- automatically reverted
   });
   return (
     <>
       <div className="project" ref={projectRef}>
         <div className="project-content">
+          <div className="close">
+            <img src="img/icons/close.png" alt="" />
+          </div>
           <h1>Hello</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
