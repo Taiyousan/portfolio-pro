@@ -1,11 +1,21 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Project() {
   const projectRef = useRef(null);
 
+  useGSAP(() => {
+    // gsap code here...
+    gsap.from(".project", {
+      x: -500,
+      ease: "bounce.out",
+      duration: 1,
+    }); // <-- automatically reverted
+  });
   return (
     <>
-      <div className="project">
+      <div className="project" ref={projectRef}>
         <div className="project-content">
           <h1>Hello</h1>
           <p>
