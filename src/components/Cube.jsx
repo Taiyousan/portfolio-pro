@@ -129,15 +129,20 @@ export default function Cube(props) {
     if (!clicked) {
       setClicked(true);
       recentrer();
-      focusOnCube();
       let currentProject = props.model;
       currentProject.focusGroupPosition = props.groupPosition;
       context.setCurrentProject(currentProject);
+
+      // Pour éviter les conflits avec les mouvements de la caméra liés à la souris :
+      setTimeout(() => {
+        focusOnCube();
+      }, 10);
     }
   };
   const easeOutQuad = (t) => t * (2 - t);
 
   const handleHover = () => {
+    if (clicked) return;
     setRotationSpeedFactor(30);
 
     // Déclenche la diminution progressive après un délai de 2 secondes

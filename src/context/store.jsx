@@ -20,6 +20,7 @@ export function AppContextProvider({ children }) {
 
   // states
   const [currentProject, setCurrentProject] = useState(null);
+  const [canMoveCamera, setCanMoveCamera] = useState(false);
 
   // effects
 
@@ -44,6 +45,8 @@ export function AppContextProvider({ children }) {
     currentProject,
     setCurrentProject,
     outOfFocus,
+    canMoveCamera,
+    setCanMoveCamera,
   };
 
   return (

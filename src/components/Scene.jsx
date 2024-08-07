@@ -8,7 +8,7 @@ import {
   Resize,
   useGLTF,
 } from "@react-three/drei";
-import { Suspense, useRef, useEffect } from "react";
+import { Suspense, useRef, useEffect, useState } from "react";
 import { useAppContext } from "../context/store";
 import { TailSpin } from "react-loader-spinner";
 import models from "../data/models.json";
@@ -59,12 +59,28 @@ export default function Scene() {
     };
   }, [context.allRotatingCubes]);
 
+  useEffect(() => {
+    if (context.currentProject) {
+      setTimeout(() => {
+        context.setCanMoveCamera(true);
+      }, 1000);
+    } else {
+      context.setCanMoveCamera(false);
+    }
+  }, [context.currentProject]);
+
   return (
     <>
       <ambientLight intensity={0.5} />
       <directionalLight intensity={0.5} position={[10, 15, 10]} />
       <Environment preset="city" />
-      <CameraControls ref={context.cameraControlsRef} />
+      <CameraControls
+        ref={context.cameraControlsRef}
+        polarRotateSpeed={context.canMoveCamera ? 1 : 0}
+        azimuthRotateSpeed={context.canMoveCamera ? 1 : 0}
+        truckSpeed={0}
+        dollySpeed={context.canMoveCamera ? 1 : 0}
+      />
       {/* <ContactShadows
         rotation-x={Math.PI / 2}
         position={[0, -1, 0]}
