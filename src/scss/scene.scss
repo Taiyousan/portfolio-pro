@@ -2,3 +2,45 @@
     // modern font
     font-family: "Roboto", sans-serif;
 }
+
+.thumb-wrapper {
+    .thumb {
+        width: 500px;
+        height: 300px;
+        background-size: cover;
+        .visit {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease-in-out;
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                .btn-visit {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            .btn-visit {
+                background-color: rgb(255, 255, 255);
+                padding: 10px 20px;
+                border-radius: 5px;
+                color: #000;
+                text-transform: uppercase;
+                font-weight: bold;
+                text-decoration: none;
+                transition: background-color 0.3s;
+                font-family: "Roboto", sans-serif;
+                opacity: 0;
+                transform: scale(0);
+                transition: all 0.2s ease-in-out;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.8);
+                }
+            }
+        }
+    }
+}

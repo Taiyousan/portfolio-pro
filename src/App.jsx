@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import Scene from "./components/Scene";
 import Overlay from "./components/Overlay";
 import { AppContextProvider } from "./context/store";
-
+import { Leva } from "leva";
 export const LevelContext = React.createContext();
 
 export default function CanvasContent() {
@@ -15,12 +15,13 @@ export default function CanvasContent() {
           fov: 45,
           near: 0.1,
           far: 200,
-          position: [4, 2, 5],
+          position: [0, 0, 8],
         }}
       >
         <Scene />
       </Canvas>
       <Overlay />
+      <Leva hidden />
     </>
   );
 }
