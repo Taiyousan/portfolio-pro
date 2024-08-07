@@ -18,6 +18,7 @@ import Model from "./Model";
 import Cube from "./Cube";
 import Title from "./Title";
 import Thumb from "./Thumb";
+import AboutButton from "./AboutButton";
 
 export default function Scene() {
   const context = useAppContext();
@@ -114,6 +115,7 @@ export default function Scene() {
               <Thumb />
             </>
           )}
+          <AboutButton />
           {models.map((model, index) => {
             // if (index > 4) return null;
 
