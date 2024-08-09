@@ -21,6 +21,7 @@ export function AppContextProvider({ children }) {
   // states
   const [currentProject, setCurrentProject] = useState(null);
   const [canMoveCamera, setCanMoveCamera] = useState(false);
+  const [isCards, setIsCards] = useState(false);
 
   // effects
 
@@ -47,6 +48,8 @@ export function AppContextProvider({ children }) {
     outOfFocus,
     canMoveCamera,
     setCanMoveCamera,
+    isCards,
+    setIsCards,
   };
 
   return (

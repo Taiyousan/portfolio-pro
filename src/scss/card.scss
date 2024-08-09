@@ -1,0 +1,40 @@
+.card-container {
+    height: 417px;
+    width: 267px;
+    background: #cbcad0;
+
+    margin: 0;
+    padding: 0;
+    border-radius: 15px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-family: "Roboto", sans-serif;
+        color: #005d8f;
+        font-size: 1.5em;
+    }
+
+    .corner {
+        position: absolute;
+        height: 2em;
+        margin: 1em;
+        border-radius: 5px;
+
+        &.top-left {
+            top: 0;
+            left: 0;
+        }
+
+        &.bottom-right {
+            bottom: 0;
+            right: 0;
+
+            transform: rotate(180deg);
+        }
+    }
+}

@@ -1,6 +1,6 @@
 // imports
 import { useState, useEffect, useRef, useMemo } from "react";
-import { useGLTF, Gltf, Float, Text } from "@react-three/drei";
+import { useGLTF, Gltf, Float, Text, Html } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 import * as THREE from "three";
 import { useAppContext } from "../context/store";
@@ -12,8 +12,8 @@ export default function AboutButton() {
 
   // mesh
   const { scale, positionY } = useSpring({
-    scale: hovered ? 0.5 : 0.3,
-    positionY: context.currentProject ? 8 : 0,
+    scale: context.allRotatingCubes ? (hovered ? 0.5 : 0.3) : 0,
+    positionY: context.currentProject || !context.allRotatingCubes ? 8 : 0,
     config: { mass: 1, tension: 400, friction: 50, precision: 0.0001 },
   });
 
@@ -34,6 +34,10 @@ export default function AboutButton() {
         position-y={positionY}
         rotation-x={(Math.PI / 2) * 1}
         scale={scale}
+        onClick={() => {
+          context.setAllRotatingCubes(false);
+          context.setIsCards(true);
+        }}
       >
         <animated.group
           scale={textScale}

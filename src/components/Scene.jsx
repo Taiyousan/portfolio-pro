@@ -19,6 +19,7 @@ import Cube from "./Cube";
 import Title from "./Title";
 import Thumb from "./Thumb";
 import AboutButton from "./AboutButton";
+import Cards from "./Cards";
 
 export default function Scene() {
   const context = useAppContext();
@@ -116,6 +117,7 @@ export default function Scene() {
             </>
           )}
           <AboutButton />
+          {context.isCards && <Cards />}
           {models.map((model, index) => {
             // if (index > 4) return null;
 

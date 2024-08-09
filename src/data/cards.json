@@ -1,0 +1,49 @@
+[
+  {
+    "title": "Skills",
+    "cornerImg": "skills.png",
+    "position": [-4.5, 0, -2],
+    "list": [
+      {
+        "content": "Three.js",
+        "img": "threejs.png"
+      }
+    ]
+  },
+  {
+    "title": "Studies",
+    "cornerImg": "studies.png",
+    "position": [-1.5, 0, -2],
+
+    "list": [
+      {
+        "content": "MMI",
+        "img": "mmi.png"
+      }
+    ]
+  },
+  {
+    "title": "Hobbies",
+    "cornerImg": "hobbies.png",
+    "position": [1.5, 0, -2],
+
+    "list": [
+      {
+        "content": "hobby",
+        "img": "hobby.png"
+      }
+    ]
+  },
+  {
+    "title": "Who am I ?",
+    "cornerImg": "shams.png",
+    "position": [4.5, 0, -2],
+
+    "list": [
+      {
+        "content": "me",
+        "img": "me.png"
+      }
+    ]
+  }
+]
