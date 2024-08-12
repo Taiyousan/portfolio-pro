@@ -115,19 +115,19 @@ export default function Cube(props) {
   });
 
   useEffect(() => {
-    if (context.allRotatingCubes) {
+    if (context.isCubes) {
       setClicked(false);
       setTimeout(() => {
         setActive(true);
       }, props.delay);
-    } else if (!context.allRotatingCubes && !clicked) {
+    } else if (!context.isCubes && !clicked) {
       setActive(false);
-    } else if (!context.allRotatingCubes && clicked) {
+    } else if (!context.isCubes && clicked) {
       setTimeout(() => {
         setActive(true);
       }, props.delay);
     }
-  }, [context.allRotatingCubes]);
+  }, [context.isCubes]);
 
   const handleClick = () => {
     if (!clicked) {
@@ -174,6 +174,7 @@ export default function Cube(props) {
   const recentrer = () => {
     // setIsRotating(false);
     context.setAllRotatingCubes(false);
+    context.setIsCubes(false);
   };
 
   const focusOnCube = () => {

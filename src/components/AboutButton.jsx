@@ -12,8 +12,8 @@ export default function AboutButton() {
 
   // mesh
   const { scale, positionY } = useSpring({
-    scale: context.allRotatingCubes ? (hovered ? 0.5 : 0.3) : 0,
-    positionY: context.currentProject || !context.allRotatingCubes ? 8 : 0,
+    scale: context.isCubes ? (hovered ? 0.5 : 0.3) : 0,
+    positionY: context.currentProject || !context.isCubes ? 8 : 0,
     config: { mass: 1, tension: 400, friction: 50, precision: 0.0001 },
   });
 
@@ -35,7 +35,8 @@ export default function AboutButton() {
         rotation-x={(Math.PI / 2) * 1}
         scale={scale}
         onClick={() => {
-          context.setAllRotatingCubes(false);
+          // context.setAllRotatingCubes(false);
+          context.setIsCubes(false);
           context.setIsCards(true);
         }}
       >
