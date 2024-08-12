@@ -1,6 +1,6 @@
 import { useAppContext } from "../context/store";
 import { useEffect, useState } from "react";
-import { useSpring, animated } from "@react-spring/three";
+import { useSpring, animated, a } from "@react-spring/three";
 import { useGLTF, Html, Float } from "@react-three/drei";
 
 import cardsData from "../data/cards.json";
@@ -41,7 +41,7 @@ const Cards = () => {
   );
 };
 
-const CardCover = ({ data }) => {
+const CardFront = ({ data }) => {
   return (
     <Html
       occlude
@@ -62,6 +62,35 @@ const CardCover = ({ data }) => {
           className="bottom-right corner"
         />
         <h1 style={{ color: data.color }}>{data.title}</h1>
+      </div>
+    </Html>
+  );
+};
+const CardBack = ({ data, setCurrentCard }) => {
+  console.log("data", data);
+
+  return (
+    <Html
+      occlude={false}
+      transform
+      position={[0, 0, 0.035]}
+      scale={[0.38, 0.38, 0.38]}
+      rotation-y={-Math.PI}
+      pointerEvents="none"
+    >
+      <div className="card-container back">
+        {data.list.map((item, index) => (
+          <div className="list-content" key={index}>
+            <img src={`img/cards/icons/${item.img}`} alt="" />
+            {item.href !== undefined ? (
+              <a href={item.href} style={{ color: data.color }} target="blank">
+                {item.content}
+              </a>
+            ) : (
+              <p style={{ color: data.color }}>{item.content}</p>
+            )}
+          </div>
+        ))}
       </div>
     </Html>
   );
@@ -103,18 +132,19 @@ const Card = ({ data, index, currentCard, setCurrentCard }) => {
   useEffect(() => {
     let timeoutId;
     if (currentCard === null) {
-      timeoutId = setTimeout(() => {
-        setHovered(false);
-      }, 250);
+      // timeoutId = setTimeout(() => {
+      //   setHovered(false);
+      // }, 250);
     } else if (currentCard !== index) {
       setHovered(false);
     } else {
       setHovered(true);
     }
-
-    // Cleanup function to clear timeout if currentCard changes before 1000ms
-    return () => clearTimeout(timeoutId);
   }, [currentCard, index]);
+
+  useEffect(() => {
+    setHovered(false);
+  }, [active]);
 
   const handleHover = () => {
     setCurrentCard(index);
@@ -125,7 +155,11 @@ const Card = ({ data, index, currentCard, setCurrentCard }) => {
   };
 
   return (
-    <Float>
+    <Float
+      speed={1} // Animation speed, defaults to 1
+      rotationIntensity={1} // XYZ rotation intensity, defaults to 1
+      floatIntensity={0.1} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
+    >
       <animated.group
         dispose={null}
         position-x={data.position[0]}
@@ -143,7 +177,8 @@ const Card = ({ data, index, currentCard, setCurrentCard }) => {
             geometry={nodes.Plane.geometry}
             material={nodes.Plane.material}
           >
-            <CardCover data={data} />
+            <CardFront data={data} />
+            <CardBack data={data} setCurrentCard={setCurrentCard} />
           </mesh>
         </animated.group>
       </animated.group>

@@ -15,7 +15,6 @@
 
     h1 {
         font-family: "Space Grotesk", sans-serif;
-        font-family: "Ro", sans-serif;
         color: #005d8f;
         font-size: 1.5em;
         font-weight: 200;
@@ -38,6 +37,45 @@
             right: 0;
 
             transform: rotate(180deg);
+        }
+    }
+}
+
+.back {
+    flex-direction: column;
+    .list-content {
+        height: 2em;
+        width: 80%;
+
+        display: flex;
+        align-items: center;
+
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+
+        img {
+            height: 80%;
+            margin: 1em;
+        }
+
+        p {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1em;
+            font-weight: 200;
+            letter-spacing: 0.1em;
+        }
+        a {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1em;
+            font-weight: 200;
+            letter-spacing: 0.1em;
+            text-transform: none;
+            cursor: pointer;
+            pointer-events: auto;
+            text-decoration: none;
+            &:visited {
+                text-decoration: none;
+            }
         }
     }
 }
