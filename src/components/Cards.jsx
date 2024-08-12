@@ -1,7 +1,7 @@
 import { useAppContext } from "../context/store";
 import { useEffect, useState } from "react";
 import { useSpring, animated } from "@react-spring/three";
-import { useGLTF, Html } from "@react-three/drei";
+import { useGLTF, Html, Float } from "@react-three/drei";
 
 import cardsData from "../data/cards.json";
 
@@ -9,6 +9,7 @@ const Cards = () => {
   const context = useAppContext();
 
   const [active, setActive] = useState(false);
+  const [currentCard, setCurrentCard] = useState(null);
 
   const { scale } = useSpring({
     scale: active ? 1 : 0,
@@ -26,7 +27,15 @@ const Cards = () => {
     <animated.group>
       {/* <Card /> */}
       {cardsData.map((card, index) => {
-        return <Card key={index} data={card} index={index} />;
+        return (
+          <Card
+            key={index}
+            data={card}
+            index={index}
+            currentCard={currentCard}
+            setCurrentCard={setCurrentCard}
+          />
+        );
       })}
     </animated.group>
   );
@@ -34,7 +43,13 @@ const Cards = () => {
 
 const CardCover = ({ data }) => {
   return (
-    <Html occlude transform position={[0, 0, 0.035]} scale={[0.38, 0.38, 0.38]}>
+    <Html
+      occlude
+      transform
+      position={[0, 0, 0.035]}
+      scale={[0.38, 0.38, 0.38]}
+      pointerEvents="none"
+    >
       <div className="card-container">
         <img
           src={`img/cards/${data.cornerImg}`}
@@ -52,8 +67,8 @@ const CardCover = ({ data }) => {
   );
 };
 
-const Card = ({ data, index }) => {
-  const { nodes, materials } = useGLTF("models/card.glb");
+const Card = ({ data, index, currentCard, setCurrentCard }) => {
+  const { nodes } = useGLTF("models/card.glb");
 
   const [active, setActive] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -62,7 +77,7 @@ const Card = ({ data, index }) => {
     setTimeout(() => {
       setActive(true);
     }, index * 100);
-  }, []);
+  }, [index]);
 
   const { scale, positionY } = useSpring({
     scale: active ? 1 : 0,
@@ -70,40 +85,61 @@ const Card = ({ data, index }) => {
     config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
   });
 
-  const [rotate, api] = useSpring(() => ({
-    from: { x: 0 },
-  }));
+  const { rotationX, rotationY, rotationZ } = useSpring({
+    rotationX: hovered ? Math.PI : 0,
+    rotationY: hovered ? Math.PI : 0,
+    rotationZ: hovered ? Math.PI : 0,
+    config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
+  });
 
   useEffect(() => {
-    if (hovered) {
-      api.start({ x: 0 });
+    let timeoutId;
+    if (currentCard === null) {
+      timeoutId = setTimeout(() => {
+        setHovered(false);
+      }, 250);
+    } else if (currentCard !== index) {
+      setHovered(false);
     } else {
-      api.start({ x: 500 });
+      setHovered(true);
     }
-  }, [hovered]);
+
+    // Cleanup function to clear timeout if currentCard changes before 1000ms
+    return () => clearTimeout(timeoutId);
+  }, [currentCard, index]);
+
+  const handleHover = () => {
+    setCurrentCard(index);
+  };
+
+  const handleHoverOut = () => {
+    setCurrentCard(null);
+  };
 
   return (
-    <animated.group
-      dispose={null}
-      position-x={data.position[0]}
-      position-y={positionY}
-      position-z={data.position[2]}
-      scale={scale}
-      onMouseEnter={() => setHovered(true)}
-      //   rotation-y={rotate}
-    >
-      <group name="Scene">
-        <mesh
-          name="Plane"
-          castShadow
-          receiveShadow
-          geometry={nodes.Plane.geometry}
-          material={nodes.Plane.material}
-        >
-          <CardCover data={data} />
-        </mesh>
-      </group>
-    </animated.group>
+    <Float>
+      <animated.group
+        dispose={null}
+        position-x={data.position[0]}
+        position-y={positionY}
+        position-z={data.position[2]}
+        scale={scale}
+        onPointerOver={handleHover}
+        onPointerOut={handleHoverOut}
+      >
+        <animated.group name="Scene" rotation-y={rotationY}>
+          <mesh
+            name="Plane"
+            castShadow
+            receiveShadow
+            geometry={nodes.Plane.geometry}
+            material={nodes.Plane.material}
+          >
+            <CardCover data={data} />
+          </mesh>
+        </animated.group>
+      </animated.group>
+    </Float>
   );
 };
 
