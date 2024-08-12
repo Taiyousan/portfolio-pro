@@ -132,13 +132,9 @@ export default function Cube(props) {
       let currentProject = props.model;
       currentProject.focusGroupPosition = props.groupPosition;
       context.setCurrentProject(currentProject);
-
-      // Pour éviter les conflits avec les mouvements de la caméra liés à la souris :
-      setTimeout(() => {
-        focusOnCube();
-      }, 10);
     }
   };
+
   const easeOutQuad = (t) => t * (2 - t);
 
   const handleHover = () => {
@@ -177,19 +173,27 @@ export default function Cube(props) {
   };
 
   const focusOnCube = () => {
-    context.cameraControlsRef.current?.setPosition(
-      props.groupPosition[0],
-      props.groupPosition[1],
-      2,
-      true
-    );
-    context.cameraControlsRef.current?.setTarget(
-      props.groupPosition[0],
-      props.groupPosition[1],
-      props.groupPosition[2],
-      true
-    );
+    if (context.cameraControlsRef.current) {
+      context.cameraControlsRef.current.setPosition(
+        props.groupPosition[0],
+        props.groupPosition[1],
+        2,
+        true
+      );
+      context.cameraControlsRef.current.setTarget(
+        props.groupPosition[0],
+        props.groupPosition[1],
+        props.groupPosition[2],
+        true
+      );
+    }
   };
+
+  useEffect(() => {
+    if (clicked && context.cameraControlsRef.current) {
+      focusOnCube();
+    }
+  }, [clicked, context.cameraControlsRef.current]);
 
   return (
     <Float
@@ -209,6 +213,7 @@ export default function Cube(props) {
         onPointerEnter={() => {
           if (!clicked) handleHover();
         }}
+        onClick={handleClick}
       >
         <animated.mesh
           castShadow
@@ -216,7 +221,6 @@ export default function Cube(props) {
           geometry={cube.nodes.Cube.geometry}
           material={glassMaterial}
           scale={cubeScale}
-          onClick={handleClick}
           // onPointerEnter={handleHover}
           // onPointerLeave={handleUnhover}
         />
@@ -231,3 +235,11 @@ export default function Cube(props) {
     </Float>
   );
 }
+
+useGLTF.preload("models/cube.glb");
+useGLTF.preload("models/boinaud.glb");
+useGLTF.preload("models/cetim.glb");
+useGLTF.preload("models/tete_lauree_std.glb");
+useGLTF.preload("models/bbc.glb");
+useGLTF.preload("models/resurection.glb");
+useGLTF.preload("models/chaussure.glb");

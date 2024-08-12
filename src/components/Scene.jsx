@@ -93,48 +93,29 @@ export default function Scene() {
         far={10}
       /> */}
 
-      <Center>
-        <Suspense
-          fallback={
-            <Html>
-              <TailSpin
-                visible={true}
-                height="80"
-                width="80"
-                color="#373e54"
-                ariaLabel="tail-spin-loading"
-                radius="1"
-                wrapperStyle={{}}
-                wrapperClass=""
-              />
-            </Html>
-          }
-        >
-          {context.currentProject && (
-            <>
-              <Title />
-              <Thumb />
-            </>
-          )}
-          <AboutButton />
-          {context.isCards && <Cards />}
-          {models.map((model, index) => {
-            // if (index > 4) return null;
+      {context.currentProject && (
+        <>
+          <Title />
+          <Thumb />
+        </>
+      )}
+      <AboutButton />
+      {context.isCards && <Cards />}
+      {models.map((model, index) => {
+        // if (index > 4) return null;
 
-            const groupPosition = calculatePosition(index, models.length);
-            // console.log("groupPosition", groupPosition);
+        const groupPosition = calculatePosition(index, models.length);
+        // console.log("groupPosition", groupPosition);
 
-            return (
-              <Cube
-                key={index}
-                model={model}
-                delay={index * 250}
-                groupPosition={groupPosition}
-              />
-            );
-          })}
-        </Suspense>
-      </Center>
+        return (
+          <Cube
+            key={index}
+            model={model}
+            delay={index * 250}
+            groupPosition={groupPosition}
+          />
+        );
+      })}
     </>
   );
 }

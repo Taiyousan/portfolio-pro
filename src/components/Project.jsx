@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useAppContext } from "../context/store";
 
 export default function Project() {
+  const context = useAppContext();
   const projectRef = useRef(null);
 
   useGSAP(() => {
@@ -18,7 +20,7 @@ export default function Project() {
     <>
       <div className="project" ref={projectRef}>
         <div className="project-content">
-          <div className="close">
+          <div className="close" onClick={context.outOfFocus}>
             <img src="img/icons/close.png" alt="" />
           </div>
           <h1>Hello</h1>
