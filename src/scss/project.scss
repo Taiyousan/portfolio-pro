@@ -6,7 +6,10 @@
     top: 0vh;
     left: 0em;
     background-color: #252525;
+    font-family: "Roboto", sans-serif;
     // border-radius: 10px;
+    font-family: "Space Grotesk", sans-serif;
+
     .project-content {
         opacity: 1;
         width: 90%;
@@ -19,7 +22,24 @@
         position: relative;
         .project-title {
             font-size: 2em;
-            font-family: "Roboto", sans-serif;
+            text-align: center;
+        }
+        .tag {
+            background-color: #484848;
+            color: #fff;
+            padding: 1.5em;
+            border-radius: 10px;
+            font-size: 0.8em;
+            margin: 1em;
+
+            span {
+                font-family: "Space Grotesk", sans-serif;
+                display: inline-block;
+                font-size: 1.5em;
+                color: #ffa4a4;
+                margin-left: 0.1em;
+                transform: translateY(10%);
+            }
         }
         .close {
             position: absolute;
@@ -38,6 +58,17 @@
                 width: 2em;
                 height: 2em;
                 cursor: pointer;
+            }
+        }
+        .technos {
+            margin: 2em;
+            background-color: #fff;
+            border-radius: 50px;
+            img {
+                height: 2em;
+                margin: 1em;
+
+                filter: grayscale(50%);
             }
         }
     }

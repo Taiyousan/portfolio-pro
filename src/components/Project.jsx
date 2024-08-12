@@ -14,7 +14,19 @@ export default function Project() {
       ease: "bounce.out",
       duration: 1,
       delay: 0.5,
-    }); // <-- automatically reverted
+    });
+    gsap.from(".tag", {
+      x: -500,
+      ease: "bounce.out",
+      duration: 1,
+      delay: 1.5,
+    });
+    gsap.from(".technos", {
+      x: -500,
+      ease: "bounce.out",
+      duration: 1,
+      delay: 1.5,
+    });
   });
   return (
     <>
@@ -23,7 +35,13 @@ export default function Project() {
           <div className="close" onClick={context.outOfFocus}>
             <img src="img/icons/close.png" alt="" />
           </div>
-          <h1>Hello</h1>
+          <h1 className="project-title">{context.currentProject.title}</h1>
+          <div className="tag with">
+            avec <span>Okénite</span>
+          </div>
+          <div className="tag for">
+            pour <span>Le Musée des Beaux-Arts de Reims</span>
+          </div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
             doloremque quasi est fuga debitis accusamus, ut qui deleniti,
@@ -38,6 +56,11 @@ export default function Project() {
             cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui?
             Veniam, culpa eum.
           </p>
+          <div className="technos">
+            {context.currentProject.technos.map((techno, index) => (
+              <img src={`img/cards/icons/${techno}.png`} alt="" key={index} />
+            ))}
+          </div>
         </div>
       </div>
     </>

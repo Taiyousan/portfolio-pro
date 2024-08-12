@@ -1,11 +1,14 @@
 [
   {
-    "name": "bbc",
+    "name": "reims",
+    "title": "Musée des Beaux-Arts de Reims",
+    "href": "https://digital.okan3d.com/P_9297_Reims_Scan/P_9297_Reims_Scan/",
     "positionX": 0,
-    "positionY": -0.2,
+    "positionY": -0.35,
     "positionZ": 0,
-    "scale": 0.7,
-    "groupPosition": [0, -1, 0]
+    "scale": 0.009,
+    "groupPosition": [0, -1, 0],
+    "technos": ["react", "threejs", "r3f", "blender"]
   },
   {
     "name": "resurection",

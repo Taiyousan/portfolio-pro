@@ -45,7 +45,7 @@ export default function AboutButton() {
           position-z={textPositionY}
           rotation-x={(Math.PI / 2) * -1}
         >
-          <Text color={"#000"}>À propos de moi</Text>
+          <Text color={"#000"}>About me</Text>
         </animated.group>
         <animated.mesh
           onPointerEnter={() => setHovered(true)}
