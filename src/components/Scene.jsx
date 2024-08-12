@@ -111,7 +111,7 @@ export default function Scene() {
           <Cube
             key={index}
             model={model}
-            delay={index * 250}
+            delay={index * 50}
             groupPosition={groupPosition}
           />
         );

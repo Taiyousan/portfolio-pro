@@ -117,11 +117,15 @@ export default function Cube(props) {
   useEffect(() => {
     if (context.allRotatingCubes) {
       setClicked(false);
-      setActive(true);
+      setTimeout(() => {
+        setActive(true);
+      }, props.delay);
     } else if (!context.allRotatingCubes && !clicked) {
       setActive(false);
     } else if (!context.allRotatingCubes && clicked) {
-      setActive(true);
+      setTimeout(() => {
+        setActive(true);
+      }, props.delay);
     }
   }, [context.allRotatingCubes]);
 

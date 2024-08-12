@@ -56,3 +56,5 @@ export default function AboutButton() {
     </Float>
   );
 }
+
+useGLTF.preload("models/picto-shams.glb");

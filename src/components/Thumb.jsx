@@ -127,3 +127,5 @@ export default function Thumb() {
     </>
   );
 }
+
+useGLTF.preload("models/laptop.glb");
