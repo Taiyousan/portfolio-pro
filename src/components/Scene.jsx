@@ -71,6 +71,16 @@ export default function Scene() {
     }
   }, [context.currentProject]);
 
+  useEffect(() => {
+    const root = document.getElementById("root");
+
+    if (!context.isCards) {
+      root.style.backgroundColor = "#f0f0f0";
+    } else if (context.isCards) {
+      root.style.backgroundColor = "#252525";
+    }
+  }, [context.isCards]);
+
   return (
     <>
       <ambientLight intensity={0.5} />
@@ -100,7 +110,7 @@ export default function Scene() {
         </>
       )}
       <AboutButton />
-      {context.isCards && <Cards />}
+      {context.currentProject === null && <Cards />}
       {models.map((model, index) => {
         // if (index > 4) return null;
 

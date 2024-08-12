@@ -1,7 +1,7 @@
 .card-container {
     height: 417px;
     width: 267px;
-    background: #cbcad0;
+    background: #ebebeb;
 
     margin: 0;
     padding: 0;
@@ -14,9 +14,12 @@
     align-items: center;
 
     h1 {
-        font-family: "Roboto", sans-serif;
+        font-family: "Space Grotesk", sans-serif;
+        font-family: "Ro", sans-serif;
         color: #005d8f;
         font-size: 1.5em;
+        font-weight: 200;
+        letter-spacing: 0.1em;
     }
 
     .corner {

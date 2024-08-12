@@ -24,6 +24,17 @@ export default function Overlay() {
       )}
       <div className="overlay">
         {/* <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} /> */}
+        {context.isCards && (
+          <div
+            className="retour"
+            onClick={() => {
+              context.setIsCubes(true);
+              context.setIsCards(false);
+            }}
+          >
+            <img src="img/icons/retour.png" alt="" />
+          </div>
+        )}
         {context.currentProject && <Project />}
       </div>
     </>

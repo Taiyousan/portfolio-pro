@@ -61,7 +61,7 @@ const CardCover = ({ data }) => {
           alt=""
           className="bottom-right corner"
         />
-        <h1>{data.title}</h1>
+        <h1 style={{ color: data.color }}>{data.title}</h1>
       </div>
     </Html>
   );
@@ -70,14 +70,22 @@ const CardCover = ({ data }) => {
 const Card = ({ data, index, currentCard, setCurrentCard }) => {
   const { nodes } = useGLTF("models/card.glb");
 
+  const context = useAppContext();
+
   const [active, setActive] = useState(false);
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setActive(true);
-    }, index * 100);
-  }, [index]);
+    if (context.isCubes) {
+      setTimeout(() => {
+        setActive(false);
+      }, index * 10);
+    } else {
+      setTimeout(() => {
+        setActive(true);
+      }, index * 100);
+    }
+  }, [context.isCubes]);
 
   const { scale, positionY } = useSpring({
     scale: active ? 1 : 0,
