@@ -22,7 +22,7 @@
     "groupPosition": [-1, 1, 0]
   },
   {
-    "name": "tete_lauree_std",
+    "name": "tete",
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
@@ -30,12 +30,16 @@
     "groupPosition": [-2, 1, 0]
   },
   {
-    "name": "chaussure",
+    "name": "configurateur",
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
     "scale": 0.3,
-    "groupPosition": [1, 1, 0]
+    "groupPosition": [1, 1, 0],
+    "technos": ["react", "threejs", "r3f", "blender"],
+    "texts": [
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque quasi est fuga debitis accusamus, ut qui deleniti, incidunt neque placeat repudiandae autem nostrum suscipit ratione ab expedita nulla libero dicta doloribus nihil accusantium. Quidem harum deleniti sequi tempore quas veritatis architecto, dolor dolore quasi unde, vel ipsam numquam ipsa voluptates quos nemo exercitationem modi, debitis laborum iste ullam quis explicabo doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad impedit dolor sed hic sapiente repellat iusto. Illum repudiandae dignissimos, ducimus consectetur, dolores tempora dicta iure quod cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui? Veniam, culpa eum."
+    ]
   },
   {
     "name": "boinaud",

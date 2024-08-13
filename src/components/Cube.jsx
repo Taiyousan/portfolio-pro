@@ -5,13 +5,12 @@ import { useSpring, animated } from "@react-spring/three";
 import * as THREE from "three";
 import { useControls } from "leva";
 
-import Model from "./Model";
 import { useFrame } from "@react-three/fiber";
 
 import { useAppContext } from "../context/store";
 
 export default function Cube(props) {
-  let model = useGLTF(`models/${props.model.name}.glb`);
+  let model = useGLTF(`projects/${props.model.name}/model.glb`);
   const cube = useGLTF("models/cube.glb");
   const context = useAppContext();
 
@@ -242,9 +241,9 @@ export default function Cube(props) {
 }
 
 useGLTF.preload("models/cube.glb");
-useGLTF.preload("models/boinaud.glb");
-useGLTF.preload("models/cetim.glb");
-useGLTF.preload("models/tete_lauree_std.glb");
-useGLTF.preload("models/bbc.glb");
-useGLTF.preload("models/resurection.glb");
-useGLTF.preload("models/chaussure.glb");
+useGLTF.preload("projects/boinaud/model.glb");
+useGLTF.preload("projects/cetim/model.glb");
+useGLTF.preload("projects/tete/model.glb");
+useGLTF.preload("projects/reims/model.glb");
+useGLTF.preload("projects/resurection/model.glb");
+useGLTF.preload("projects/configurateur/model.glb");

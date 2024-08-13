@@ -14,7 +14,6 @@ import { TailSpin } from "react-loader-spinner";
 import models from "../data/models.json";
 
 // components
-import Model from "./Model";
 import Cube from "./Cube";
 import Title from "./Title";
 import Thumb from "./Thumb";
@@ -129,5 +128,3 @@ export default function Scene() {
     </>
   );
 }
-
-useGLTF.preload("models/bbc.glb");

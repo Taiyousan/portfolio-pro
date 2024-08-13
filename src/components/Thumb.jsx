@@ -112,7 +112,7 @@ export default function Thumb() {
                 <div
                   className="thumb"
                   style={{
-                    backgroundImage: `url(img/thumbs/${context.currentProject.name}.png)`,
+                    backgroundImage: `url(projects/${context.currentProject.name}/thumb.png)`,
                   }}
                 >
                   <div className="visit">
