@@ -1,14 +1,16 @@
 .project {
     color: #f0f0f0;
-    width: 500px;
+    width: 32em;
     height: 100vh;
-    position: absolute;
+    position: relative;
     top: 0vh;
     left: 0em;
     background-color: #252525;
     font-family: "Roboto", sans-serif;
     // border-radius: 10px;
     font-family: "Space Grotesk", sans-serif;
+    overflow-y: auto;
+    pointer-events: auto;
 
     .project-content {
         opacity: 1;
@@ -21,11 +23,19 @@
         padding: 1em;
         position: relative;
         .project-title {
-            font-size: 2em;
-            text-align: center;
+            font-size: 3em;
+            margin: 1em;
+            letter-spacing: 0.1em;
+        }
+        .project-text {
+            font-size: 1.1em;
+            // text-align: center;
+            // margin: 1em;
+            margin-left: 1em;
         }
         .tag {
-            background-color: #484848;
+            background-color: #2d2d2d;
+            width: 80%;
             color: #fff;
             padding: 1.5em;
             border-radius: 10px;
@@ -35,33 +45,16 @@
             span {
                 font-family: "Space Grotesk", sans-serif;
                 display: inline-block;
-                font-size: 1.5em;
+                font-size: 1.4em;
                 color: #ffa4a4;
                 margin-left: 0.1em;
-                transform: translateY(10%);
+                transform: translateY(7%);
             }
         }
-        .close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin: 1em;
-            cursor: pointer;
-            pointer-events: auto;
-            outline: white solid 3px;
-            padding: 0.8em;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            img {
-                width: 2em;
-                height: 2em;
-                cursor: pointer;
-            }
-        }
+
         .technos {
-            margin: 2em;
+            margin-top: 2em;
+            margin-bottom: 1em;
             background-color: #fff;
             border-radius: 50px;
             img {
@@ -71,5 +64,85 @@
                 filter: grayscale(50%);
             }
         }
+
+        .techno-name {
+            background-color: #fff;
+            color: #252525;
+            font-weight: bold;
+            border-radius: 50px;
+            width: 30%;
+            min-height: 1.7em;
+            max-height: 1.7em;
+            // padding: 0.5em 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: capitalize;
+            // margin-bottom: 0.5em;
+            // opacity: 0;
+            transition: opacity 0.2s;
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .sidebar {
+        height: 100%;
+        width: 10px;
+        background-color: #ffa4a4;
+
+        position: absolute;
+        right: 0.1em;
+        top: 0;
+    }
+}
+
+// scrollbar
+
+.project {
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #434343;
+    --sb-size: 14px;
+}
+
+.project::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+.project::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 3px;
+}
+
+.project::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    .project {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+}
+
+.close {
+    position: fixed;
+    top: 1.5em;
+    left: 27em;
+    // margin: 1em;
+    cursor: pointer;
+    pointer-events: auto;
+    outline: white solid 3px;
+    padding: 0.8em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    img {
+        width: 1em;
+        height: 1em;
+        cursor: pointer;
     }
 }

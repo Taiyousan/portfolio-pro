@@ -116,7 +116,13 @@ export default function Thumb() {
                   }}
                 >
                   <div className="visit">
-                    <div className="btn-visit">Visiter</div>
+                    <a
+                      className="btn-visit"
+                      href={context.currentProject.href}
+                      target="blank"
+                    >
+                      Visiter
+                    </a>
                   </div>
                 </div>
               </Html>

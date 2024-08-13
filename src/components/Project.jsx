@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useAppContext } from "../context/store";
@@ -7,10 +7,12 @@ export default function Project() {
   const context = useAppContext();
   const projectRef = useRef(null);
 
+  const [hoveredTechno, setHoveredTechno] = useState(null);
+
   useGSAP(() => {
     // gsap code here...
     gsap.from(".project", {
-      x: -500,
+      x: -600,
       ease: "bounce.out",
       duration: 1,
       delay: 0.5,
@@ -27,14 +29,20 @@ export default function Project() {
       duration: 1,
       delay: 1.5,
     });
+    gsap.from(".close", {
+      x: -600,
+      ease: "bounce.out",
+      duration: 1,
+      delay: 0.5,
+    });
   });
   return (
     <>
+      <div className="close" onClick={context.outOfFocus}>
+        <img src="img/icons/close.png" alt="" />
+      </div>
       <div className="project" ref={projectRef}>
         <div className="project-content">
-          <div className="close" onClick={context.outOfFocus}>
-            <img src="img/icons/close.png" alt="" />
-          </div>
           <h1 className="project-title">{context.currentProject.title}</h1>
           <div className="tag with">
             avec <span>Okénite</span>
@@ -42,25 +50,31 @@ export default function Project() {
           <div className="tag for">
             pour <span>Le Musée des Beaux-Arts de Reims</span>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            doloremque quasi est fuga debitis accusamus, ut qui deleniti,
-            incidunt neque placeat repudiandae autem nostrum suscipit ratione ab
-            expedita nulla libero dicta doloribus nihil accusantium. Quidem
-            harum deleniti sequi tempore quas veritatis architecto, dolor dolore
-            quasi unde, vel ipsam numquam ipsa voluptates quos nemo
-            exercitationem modi, debitis laborum iste ullam quis explicabo
-            doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad
-            impedit dolor sed hic sapiente repellat iusto. Illum repudiandae
-            dignissimos, ducimus consectetur, dolores tempora dicta iure quod
-            cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui?
-            Veniam, culpa eum.
-          </p>
-          <div className="technos">
+          <div
+            className="technos"
+            onPointerOut={() => {
+              setHoveredTechno(null);
+            }}
+          >
             {context.currentProject.technos.map((techno, index) => (
-              <img src={`img/cards/icons/${techno}.png`} alt="" key={index} />
+              <img
+                src={`img/cards/icons/${techno}.png`}
+                alt=""
+                key={index}
+                onPointerMove={() => {
+                  setHoveredTechno(techno);
+                }}
+              />
             ))}
           </div>
+          <div className={hoveredTechno ? "techno-name active" : "techno-name"}>
+            {hoveredTechno}
+          </div>
+          {context.currentProject.texts.map((text, index) => (
+            <p key={index} className="project-text">
+              {text}
+            </p>
+          ))}
         </div>
       </div>
     </>
