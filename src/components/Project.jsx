@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Fragment } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useAppContext } from "../context/store";
@@ -75,11 +75,28 @@ export default function Project() {
         <div className="project-content">
           <h1 className="project-title">{context.currentProject.title}</h1>
           <div className="tag with">
-            avec <span>Okénite</span>
+            avec{" "}
+            {context.currentProject.with.map((name, index) => (
+              <Fragment key={index}>
+                {index > 0 ? " & " : ""}
+                <span>{name}</span>
+              </Fragment>
+            ))}
           </div>
-          <div className="tag for">
-            pour <span>Le Musée des Beaux-Arts de Reims</span>
+
+          <div className="tag role">
+            En tant que <span>{context.currentProject.role}</span>
           </div>
+
+          <div className="tag tasks">
+            Tâches :{" "}
+            <ul>
+              {context.currentProject.tasks.map((task, index) => (
+                <li key={index}>{task}</li>
+              ))}
+            </ul>
+          </div>
+
           <div
             className="technos"
             onPointerOut={() => {

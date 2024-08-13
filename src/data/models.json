@@ -11,15 +11,38 @@
     "technos": ["react", "threejs", "r3f", "blender"],
     "texts": [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque quasi est fuga debitis accusamus, ut qui deleniti, incidunt neque placeat repudiandae autem nostrum suscipit ratione ab expedita nulla libero dicta doloribus nihil accusantium. Quidem harum deleniti sequi tempore quas veritatis architecto, dolor dolore quasi unde, vel ipsam numquam ipsa voluptates quos nemo exercitationem modi, debitis laborum iste ullam quis explicabo doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad impedit dolor sed hic sapiente repellat iusto. Illum repudiandae dignissimos, ducimus consectetur, dolores tempora dicta iure quod cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui? Veniam, culpa eum."
+    ],
+    "with": ["Okénite"],
+    "for": ["Le Musée des Beaux-Arts de Reims"],
+    "role": "développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D"
     ]
   },
   {
-    "name": "resurection",
+    "name": "england",
+    "title": "Carte stylisée",
+    "href": null,
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
     "scale": 0.001,
-    "groupPosition": [-1, 1, 0]
+    "groupPosition": [-1, 1, 0],
+    "technos": ["react", "threejs", "r3f", "blender"],
+    "texts": [
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque quasi est fuga debitis accusamus, ut qui deleniti, incidunt neque placeat repudiandae autem nostrum suscipit ratione ab expedita nulla libero dicta doloribus nihil accusantium. Quidem harum deleniti sequi tempore quas veritatis architecto, dolor dolore quasi unde, vel ipsam numquam ipsa voluptates quos nemo exercitationem modi, debitis laborum iste ullam quis explicabo doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad impedit dolor sed hic sapiente repellat iusto. Illum repudiandae dignissimos, ducimus consectetur, dolores tempora dicta iure quod cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui? Veniam, culpa eum."
+    ],
+    "with": ["Okénite"],
+    "for": ["Cetim"],
+    "role": "Développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D",
+      "Intégration de la communication avec l'API"
+    ]
   },
   {
     "name": "tete",
@@ -31,6 +54,8 @@
   },
   {
     "name": "configurateur",
+    "title": "GLB Color Config",
+    "href": "https://glb-color-config.vercel.app/",
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
@@ -39,22 +64,59 @@
     "technos": ["react", "threejs", "r3f", "blender"],
     "texts": [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque quasi est fuga debitis accusamus, ut qui deleniti, incidunt neque placeat repudiandae autem nostrum suscipit ratione ab expedita nulla libero dicta doloribus nihil accusantium. Quidem harum deleniti sequi tempore quas veritatis architecto, dolor dolore quasi unde, vel ipsam numquam ipsa voluptates quos nemo exercitationem modi, debitis laborum iste ullam quis explicabo doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad impedit dolor sed hic sapiente repellat iusto. Illum repudiandae dignissimos, ducimus consectetur, dolores tempora dicta iure quod cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui? Veniam, culpa eum."
+    ],
+    "with": ["Okénite"],
+    "role": "développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D"
     ]
   },
   {
     "name": "boinaud",
+    "title": "Jumeau numérique usine de cognac",
+    "href": null,
     "positionX": 0,
     "positionY": -0.1,
     "positionZ": 0,
     "scale": 0.009,
-    "groupPosition": [1, 1, 0]
+    "groupPosition": [1, 1, 0],
+    "technos": ["react", "threejs", "r3f", "blender"],
+    "texts": [
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque quasi est fuga debitis accusamus, ut qui deleniti, incidunt neque placeat repudiandae autem nostrum suscipit ratione ab expedita nulla libero dicta doloribus nihil accusantium. Quidem harum deleniti sequi tempore quas veritatis architecto, dolor dolore quasi unde, vel ipsam numquam ipsa voluptates quos nemo exercitationem modi, debitis laborum iste ullam quis explicabo doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad impedit dolor sed hic sapiente repellat iusto. Illum repudiandae dignissimos, ducimus consectetur, dolores tempora dicta iure quod cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui? Veniam, culpa eum."
+    ],
+    "with": ["Okénite", "The WiW"],
+    "for": ["Cetim"],
+    "role": "co-développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D",
+      "Intégration de la communication avec l'API"
+    ]
   },
   {
     "name": "cetim",
+    "title": "Mini jumeau numérique",
+    "href": null,
     "positionX": 0.1,
     "positionY": -0.25,
     "positionZ": 0,
     "scale": 0.18,
-    "groupPosition": [1, 1, 0]
+    "groupPosition": [1, 1, 0],
+    "technos": ["react", "threejs", "r3f", "blender"],
+    "texts": [
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque quasi est fuga debitis accusamus, ut qui deleniti, incidunt neque placeat repudiandae autem nostrum suscipit ratione ab expedita nulla libero dicta doloribus nihil accusantium. Quidem harum deleniti sequi tempore quas veritatis architecto, dolor dolore quasi unde, vel ipsam numquam ipsa voluptates quos nemo exercitationem modi, debitis laborum iste ullam quis explicabo doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad impedit dolor sed hic sapiente repellat iusto. Illum repudiandae dignissimos, ducimus consectetur, dolores tempora dicta iure quod cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui? Veniam, culpa eum."
+    ],
+    "with": ["Okénite", "The WiW"],
+    "for": ["Cetim"],
+    "role": "développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D",
+      "Intégration de la communication avec l'API"
+    ]
   }
 ]
