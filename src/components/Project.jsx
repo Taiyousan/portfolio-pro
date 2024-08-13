@@ -8,6 +8,7 @@ export default function Project() {
   const projectRef = useRef(null);
 
   const [hoveredTechno, setHoveredTechno] = useState(null);
+  const [reachedBottom, setReachedBottom] = useState(false);
 
   useGSAP(() => {
     // gsap code here...
@@ -35,13 +36,42 @@ export default function Project() {
       duration: 1,
       delay: 0.5,
     });
+    gsap.from(".bottom-border", {
+      x: -600,
+      ease: "bounce.out",
+      duration: 1,
+      delay: 0.5,
+    });
   });
+
+  const handleScroll = (e) => {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    if (bottom) {
+      setReachedBottom(true);
+    } else {
+      setReachedBottom(false);
+    }
+  };
   return (
     <>
       <div className="close" onClick={context.outOfFocus}>
         <img src="img/icons/close.png" alt="" />
       </div>
-      <div className="project" ref={projectRef}>
+      <div className="bottom-border">
+        <img
+          src="img/icons/down.png"
+          alt=""
+          className={reachedBottom ? "reached-bottom" : ""}
+        />
+      </div>
+      <div
+        className="project"
+        ref={projectRef}
+        onScroll={(e) => {
+          handleScroll(e);
+        }}
+      >
         <div className="project-content">
           <h1 className="project-title">{context.currentProject.title}</h1>
           <div className="tag with">

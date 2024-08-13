@@ -1,6 +1,7 @@
 .project {
     color: #f0f0f0;
     width: 32em;
+    // min-height: 100vh;
     height: 100vh;
     position: relative;
     top: 0vh;
@@ -8,7 +9,7 @@
     background-color: #252525;
     font-family: "Roboto", sans-serif;
     // border-radius: 10px;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Courier new", sans-serif;
     overflow-y: auto;
     pointer-events: auto;
 
@@ -17,7 +18,7 @@
         width: 90%;
         height: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
         flex-direction: column;
         padding: 1em;
@@ -32,10 +33,13 @@
             // text-align: center;
             // margin: 1em;
             margin-left: 1em;
+            &:last-of-type {
+                padding-bottom: 8em;
+            }
         }
         .tag {
             background-color: #2d2d2d;
-            width: 80%;
+            width: 90%;
             color: #fff;
             padding: 1.5em;
             border-radius: 10px;
@@ -43,7 +47,7 @@
             margin: 1em;
 
             span {
-                font-family: "Space Grotesk", sans-serif;
+                // font-family: "Space Grotesk", sans-serif;
                 display: inline-block;
                 font-size: 1.4em;
                 color: #ffa4a4;
@@ -69,7 +73,7 @@
             background-color: #fff;
             color: #252525;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 5px;
             width: 30%;
             min-height: 1.7em;
             max-height: 1.7em;
@@ -79,7 +83,7 @@
             align-items: center;
             text-transform: capitalize;
             // margin-bottom: 0.5em;
-            // opacity: 0;
+            opacity: 0;
             transition: opacity 0.2s;
             &.active {
                 opacity: 1;
@@ -144,5 +148,30 @@
         width: 1em;
         height: 1em;
         cursor: pointer;
+    }
+}
+
+.bottom-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    height: 4em;
+    width: 31.1em;
+    z-index: 2;
+
+    background-color: #252525;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 2em;
+        transition: opacity 0.1s;
+
+        &.reached-bottom {
+            opacity: 0;
+        }
     }
 }
