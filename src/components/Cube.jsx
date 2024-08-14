@@ -17,6 +17,8 @@ export default function Cube(props) {
   const cubeGroup = useRef();
   const modelRef = useRef();
 
+  const randomStartRotationFactor = useMemo(() => Math.random(), []);
+
   const [active, setActive] = useState(false);
   const [isRotating, setIsRotating] = useState(true);
   const [clicked, setClicked] = useState(false);
@@ -108,6 +110,7 @@ export default function Cube(props) {
   );
 
   // Store the initial rotation quaternion
+
   const initialRotation = useMemo(() => new THREE.Quaternion(), []);
 
   const [rotationSpeedFactor, setRotationSpeedFactor] = useState(1);
@@ -234,10 +237,16 @@ export default function Cube(props) {
         position-x={props.groupPosition[0]}
         position-y={positionY}
         position-z={props.groupPosition[2]}
+        // rotation-x={Math.random() * Math.PI * 0.001}
         onPointerEnter={() => {
           if (!clicked) handleHover();
         }}
         onClick={handleClick}
+        rotation={[
+          (Math.PI / 2) * randomStartRotationFactor,
+          (Math.PI / 2) * randomStartRotationFactor,
+          (Math.PI / 2) * randomStartRotationFactor,
+        ]}
       >
         <animated.mesh
           castShadow
