@@ -15,6 +15,7 @@ export default function Cube(props) {
   const context = useAppContext();
 
   const cubeGroup = useRef();
+  const modelRef = useRef();
 
   const [active, setActive] = useState(false);
   const [isRotating, setIsRotating] = useState(true);
@@ -79,6 +80,17 @@ export default function Cube(props) {
     // envMap: hdrEquirect,
     envMapIntensity: 1,
     color: color,
+    transparent: true,
+  });
+
+  const bottleMaterial = new THREE.MeshPhysicalMaterial({
+    transmission: 1.0,
+    thickness: 0.1,
+    roughness: 0,
+    clearcoat: 0.2,
+    clearcoatRoughness: 0.1,
+    envMapIntensity: 0.2,
+    color: new THREE.Color(0xffffff),
     transparent: true,
   });
 
@@ -199,6 +211,14 @@ export default function Cube(props) {
     }
   }, [clicked, context.cameraControlsRef.current]);
 
+  useEffect(() => {
+    modelRef.current.traverse((child) => {
+      if (child.isMesh && child.name === "Body1003") {
+        child.material = bottleMaterial;
+      }
+    });
+  }, [modelRef.current]);
+
   return (
     <Float
       speed={1} // Animation speed, defaults to 1
@@ -234,6 +254,7 @@ export default function Cube(props) {
           position-y={props.model.positionY}
           position-x={props.model.positionX}
           position-z={props.model.positionZ}
+          ref={modelRef}
         />
       </animated.group>
     </Float>
@@ -243,7 +264,7 @@ export default function Cube(props) {
 useGLTF.preload("models/cube.glb");
 useGLTF.preload("projects/boinaud/model.glb");
 useGLTF.preload("projects/cetim/model.glb");
-useGLTF.preload("projects/tete/model.glb");
+useGLTF.preload("projects/koopashooter/model.glb");
 useGLTF.preload("projects/reims/model.glb");
-useGLTF.preload("projects/resurection/model.glb");
+useGLTF.preload("projects/england/model.glb");
 useGLTF.preload("projects/configurateur/model.glb");

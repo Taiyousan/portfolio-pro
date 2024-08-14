@@ -4,9 +4,9 @@
     "title": "Musée des Beaux-Arts de Reims",
     "href": "https://digital.okan3d.com/P_9297_Reims_Scan/P_9297_Reims_Scan/",
     "positionX": 0,
-    "positionY": -0.35,
+    "positionY": 0.18,
     "positionZ": 0,
-    "scale": 0.009,
+    "scale": 0.02,
     "groupPosition": [0, -1, 0],
     "technos": ["react", "threejs", "r3f", "blender"],
     "texts": [
@@ -28,7 +28,7 @@
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
-    "scale": 0.001,
+    "scale": 0.4,
     "groupPosition": [-1, 1, 0],
     "technos": ["react", "threejs", "r3f", "blender"],
     "texts": [
@@ -88,7 +88,7 @@
     "positionX": 0,
     "positionY": -0.1,
     "positionZ": 0,
-    "scale": 0.009,
+    "scale": 3,
     "groupPosition": [1, 1, 0],
     "technos": ["react", "threejs", "r3f", "blender"],
     "texts": [
@@ -109,9 +109,9 @@
     "title": "Mini jumeau numérique",
     "href": null,
     "positionX": 0.1,
-    "positionY": -0.25,
+    "positionY": 0,
     "positionZ": 0,
-    "scale": 0.18,
+    "scale": 0.5,
     "groupPosition": [1, 1, 0],
     "technos": ["react", "threejs", "r3f", "blender"],
     "texts": [
