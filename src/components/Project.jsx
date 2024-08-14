@@ -74,28 +74,34 @@ export default function Project() {
       >
         <div className="project-content">
           <h1 className="project-title">{context.currentProject.title}</h1>
-          <div className="tag with">
-            avec{" "}
-            {context.currentProject.with.map((name, index) => (
-              <Fragment key={index}>
-                {index > 0 ? " & " : ""}
-                <span>{name}</span>
-              </Fragment>
-            ))}
-          </div>
-
-          <div className="tag role">
-            En tant que <span>{context.currentProject.role}</span>
-          </div>
-
-          <div className="tag tasks">
-            Tâches :{" "}
-            <ul>
-              {context.currentProject.tasks.map((task, index) => (
-                <li key={index}>{task}</li>
+          {context.currentProject.with && (
+            <div className="tag with">
+              avec{" "}
+              {context.currentProject.with.map((name, index) => (
+                <Fragment key={index}>
+                  {index > 0 ? " & " : ""}
+                  <span>{name}</span>
+                </Fragment>
               ))}
-            </ul>
-          </div>
+            </div>
+          )}
+
+          {context.currentProject.role && (
+            <div className="tag role">
+              En tant que <span>{context.currentProject.role}</span>
+            </div>
+          )}
+
+          {context.currentProject.tasks && (
+            <div className="tag tasks">
+              Tâches :{" "}
+              <ul>
+                {context.currentProject.tasks.map((task, index) => (
+                  <li key={index}>{task}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div
             className="technos"

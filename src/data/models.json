@@ -45,12 +45,20 @@
     ]
   },
   {
-    "name": "tete",
+    "name": "koopashooter",
+    "title": "Koopa Shooter",
+    "href": "https://koopa-shooter.vercel.app/",
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
-    "scale": 0.3,
-    "groupPosition": [-2, 1, 0]
+    "scale": 0.07,
+    "groupPosition": [-2, 1, 0],
+    "technos": ["threejs"],
+    "texts": [
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloremque quasi est fuga debitis accusamus, ut qui deleniti, incidunt neque placeat repudiandae autem nostrum suscipit ratione ab expedita nulla libero dicta doloribus nihil accusantium. Quidem harum deleniti sequi tempore quas veritatis architecto, dolor dolore quasi unde, vel ipsam numquam ipsa voluptates quos nemo exercitationem modi, debitis laborum iste ullam quis explicabo doloremque. Recusandae, assumenda atque ipsum vel laborum autem ad impedit dolor sed hic sapiente repellat iusto. Illum repudiandae dignissimos, ducimus consectetur, dolores tempora dicta iure quod cupiditate esse perferendis facilis laborum modi? Ex sunt totam qui? Veniam, culpa eum."
+    ],
+    "role": "développeur",
+    "tasks": ["Développement du jeu", "Développement des interactions 3D"]
   },
   {
     "name": "configurateur",
