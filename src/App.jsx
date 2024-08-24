@@ -24,7 +24,7 @@ export default function CanvasContent() {
           position: [0, 0, 8],
         }}
       >
-        <Suspense
+        {/* <Suspense
           fallback={
             <Html>
               <TailSpin
@@ -39,9 +39,9 @@ export default function CanvasContent() {
               />
             </Html>
           }
-        >
-          <Scene />
-        </Suspense>
+        > */}
+        <Scene />
+        {/* </Suspense> */}
       </Canvas>
       <Overlay />
       <Leva hidden />

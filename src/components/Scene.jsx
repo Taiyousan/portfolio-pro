@@ -128,3 +128,6 @@ export default function Scene() {
     </>
   );
 }
+
+
+useGLTF.preload("models/laptop.glb");

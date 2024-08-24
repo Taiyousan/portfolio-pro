@@ -1,5 +1,5 @@
 import { useAppContext } from "../context/store";
-import { Html, Float, useGLTF } from "@react-three/drei";
+import { Html, Float, useGLTF, useVideoTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { useSpring, animated } from "@react-spring/three";
 import { useEffect, useState } from "react";
@@ -9,7 +9,11 @@ export default function Thumb() {
   const { nodes, materials } = useGLTF("models/laptop.glb");
   const [active, setActive] = useState(false);
 
-  const blackMaterial = new THREE.MeshBasicMaterial({ color: 0x252525 });
+  // const videoTexture = useVideoTexture(`projects/${context.currentProject.name}/video.mp4`, { start: true, update: true, loop: true });
+  const videoTexture = useVideoTexture(`projects/video.mp4`, { start: true, update: true, loop: true });
+  videoTexture.wrapS = THREE.RepeatWrapping
+  videoTexture.wrapT = THREE.RepeatWrapping
+  videoTexture.repeat.y = -1;
 
   const { scale } = useSpring({
     scale: active ? 0.12 : 0,
@@ -25,6 +29,7 @@ export default function Thumb() {
   return (
     <>
       <Float
+        enabled={true} // Enable or disable the floating effect, defaults to true
         speed={1} // Animation speed, defaults to 1
         rotationIntensity={1} // XYZ rotation intensity, defaults to 1
         floatIntensity={1} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
@@ -62,7 +67,9 @@ export default function Thumb() {
                 receiveShadow
                 geometry={nodes.Plane001_2.geometry}
                 material={materials["Screen Emitter"]}
-              />
+              >
+                <meshBasicMaterial map={videoTexture} toneMapped={false} />
+              </mesh>
               <mesh
                 name="Plane001_3"
                 castShadow
@@ -92,41 +99,6 @@ export default function Thumb() {
                 material={materials.Keyboard}
               />
             </group>
-            <mesh
-              name="screen"
-              castShadow
-              receiveShadow
-              geometry={nodes.screen.geometry}
-              // material={materials["Screen Glass"]}
-              material={blackMaterial}
-            >
-              <Html
-                // occlude="blending"
-                wrapperClass="thumb-wrapper"
-                transform
-                scale={0.38}
-                occlude="blending"
-                position={[0, 1.7, -0.82]}
-                rotation-x={(-Math.PI / 2) * 0.27}
-              >
-                <div
-                  className="thumb"
-                  style={{
-                    backgroundImage: `url(projects/${context.currentProject.name}/thumb.png)`,
-                  }}
-                >
-                  <div className="visit">
-                    <a
-                      className="btn-visit"
-                      href={context.currentProject.href}
-                      target="blank"
-                    >
-                      Visiter
-                    </a>
-                  </div>
-                </div>
-              </Html>
-            </mesh>
           </group>
         </animated.group>
       </Float>
