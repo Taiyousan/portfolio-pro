@@ -1,5 +1,7 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
+import { Perf } from 'r3f-perf'
+
 import { Html } from "@react-three/drei";
 import Scene from "./components/Scene";
 import Overlay from "./components/Overlay";
@@ -41,6 +43,7 @@ export default function CanvasContent() {
           }
         > */}
         <Scene />
+        {/* <Perf /> */}
         {/* </Suspense> */}
       </Canvas>
       <Overlay />

@@ -9,8 +9,8 @@ export default function Thumb() {
   const { nodes, materials } = useGLTF("models/laptop.glb");
   const [active, setActive] = useState(false);
 
-  // const videoTexture = useVideoTexture(`projects/${context.currentProject.name}/video.mp4`, { start: true, update: true, loop: true });
-  const videoTexture = useVideoTexture(`projects/video.mp4`, { start: true, update: true, loop: true });
+  const videoTexture = useVideoTexture(`projects/${context.currentProject.name}/video.mp4`, { start: true, update: true, loop: true });
+  // const videoTexture = useVideoTexture(`projects/video.mp4`, { start: true, update: true, loop: true });
   videoTexture.wrapS = THREE.RepeatWrapping
   videoTexture.wrapT = THREE.RepeatWrapping
   videoTexture.repeat.y = -1;
