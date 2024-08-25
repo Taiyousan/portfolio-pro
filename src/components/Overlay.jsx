@@ -22,9 +22,21 @@ export default function Overlay() {
           <ParticlesBackground />
         </div>
       )}
-      <div className="overlay" onClick={context.outOfFocus}>
+      <div className="overlay">
         {/* <img src="img/logo.svg" alt="" className="logo" onClick={handleClick} /> */}
+        {context.isCards && (
+          <div
+            className="retour"
+            onClick={() => {
+              context.setIsCubes(true);
+              context.setIsCards(false);
+            }}
+          >
+            <img src="img/icons/retour.png" alt="" />
+          </div>
+        )}
         {context.currentProject && <Project />}
+        <div className="mentions">Shams Benhamou - 2024</div>
       </div>
     </>
   );

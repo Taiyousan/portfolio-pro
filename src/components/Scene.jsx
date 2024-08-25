@@ -7,17 +7,19 @@ import {
   Html,
   Resize,
   useGLTF,
+  useVideoTexture,
 } from "@react-three/drei";
-import { Suspense, useRef, useEffect } from "react";
+import { Suspense, useRef, useEffect, useState } from "react";
 import { useAppContext } from "../context/store";
 import { TailSpin } from "react-loader-spinner";
 import models from "../data/models.json";
 
 // components
-import Model from "./Model";
 import Cube from "./Cube";
 import Title from "./Title";
 import Thumb from "./Thumb";
+import AboutButton from "./AboutButton";
+import Cards from "./Cards";
 
 export default function Scene() {
   const context = useAppContext();
@@ -59,12 +61,60 @@ export default function Scene() {
     };
   }, [context.allRotatingCubes]);
 
+  useEffect(() => {
+    if (context.currentProject) {
+      setTimeout(() => {
+        context.setCanMoveCamera(true);
+      }, 1000);
+    } else {
+      context.setCanMoveCamera(false);
+    }
+  }, [context.currentProject]);
+
+  useEffect(() => {
+    const root = document.getElementById("root");
+
+    if (!context.isCards) {
+      root.style.backgroundColor = "#f0f0f0";
+    } else if (context.isCards) {
+      root.style.backgroundColor = "#252525";
+    }
+  }, [context.isCards]);
+
+  // videoTexture
+  const boinaudVideo = useVideoTexture(`projects/boinaud/video.mp4`, { update: true, loop: true });
+  const cetimVideo = useVideoTexture(`projects/cetim/video.mp4`, { update: true, loop: true });
+  const englandVideo = useVideoTexture(`projects/england/video.mp4`, { update: true, loop: true });
+  const reimsVideo = useVideoTexture(`projects/reims/video.mp4`, { update: true, loop: true });
+  const koopashooterVideo = useVideoTexture(`projects/koopashooter/video.mp4`, { update: true, loop: true });
+  const configurateurVideo = useVideoTexture(`projects/configurateur/video.mp4`, { update: true, loop: true });
+
+  const videos = { "boinaud": boinaudVideo, "cetim": cetimVideo, "england": englandVideo, "reims": reimsVideo, "koopashooter": koopashooterVideo, "configurateur": configurateurVideo };
+
+  useEffect(() => {
+    if (context.currentProject) {
+      const videoTexture = videos[context.currentProject.name];
+
+      if (videoTexture?.image) {
+        // Reset the video to the beginning
+        videoTexture.image.currentTime = 0;
+        videoTexture.image.play();
+      }
+    }
+  }, [context.currentProject, videos]);
+
   return (
     <>
       <ambientLight intensity={0.5} />
       <directionalLight intensity={0.5} position={[10, 15, 10]} />
       <Environment preset="city" />
-      <CameraControls ref={context.cameraControlsRef} />
+      <CameraControls
+        ref={context.cameraControlsRef}
+        polarRotateSpeed={context.canMoveCamera ? 1 : 0}
+        azimuthRotateSpeed={context.canMoveCamera ? 1 : 0}
+        truckSpeed={0}
+        dollySpeed={context.canMoveCamera ? 1 : 0}
+      />
       {/* <ContactShadows
         rotation-x={Math.PI / 2}
         position={[0, -1, 0]}
@@ -75,48 +125,32 @@ export default function Scene() {
         far={10}
       /> */}
 
-      <Center>
-        <Suspense
-          fallback={
-            <Html>
-              <TailSpin
-                visible={true}
-                height="80"
-                width="80"
-                color="#373e54"
-                ariaLabel="tail-spin-loading"
-                radius="1"
-                wrapperStyle={{}}
-                wrapperClass=""
-              />
-            </Html>
-          }
-        >
-          {context.currentProject && (
-            <>
-              <Title />
-              <Thumb />
-            </>
-          )}
-          {models.map((model, index) => {
-            // if (index > 4) return null;
+      {context.currentProject && (
+        <>
+          <Title />
+          <Thumb videoTexture={videos[context.currentProject.name]} />
+        </>
+      )}
+      <AboutButton />
+      {context.currentProject === null && <Cards />}
+      {models.map((model, index) => {
+        // if (index > 4) return null;
 
-            const groupPosition = calculatePosition(index, models.length);
-            // console.log("groupPosition", groupPosition);
+        const groupPosition = calculatePosition(index, models.length);
+        // console.log("groupPosition", groupPosition);
 
-            return (
-              <Cube
-                key={index}
-                model={model}
-                delay={index * 250}
-                groupPosition={groupPosition}
-              />
-            );
-          })}
-        </Suspense>
-      </Center>
+        return (
+          <Cube
+            key={index}
+            model={model}
+            delay={index * 50}
+            groupPosition={groupPosition}
+          />
+        );
+      })}
     </>
   );
 }
 
-useGLTF.preload("models/bbc.glb");
+
+useGLTF.preload("models/laptop.glb");

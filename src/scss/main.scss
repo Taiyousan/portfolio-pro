@@ -1,6 +1,7 @@
 @import "./scene.scss";
 @import "./overlay.scss";
 @import "./project.scss";
+@import "./card.scss";
 
 html,
 body,
@@ -11,6 +12,8 @@ body,
     width: 100%;
     height: 100%;
     background: #f0f0f0;
+    transition: background-color 0.5s;
+    // background: #000;
 }
 
 canvas {

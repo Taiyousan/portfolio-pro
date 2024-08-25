@@ -28,9 +28,9 @@ const Title = () => {
       ]}
       scale={scale}
     >
-      <Text color="black" anchorX="center" anchorY="middle" fontSize={0.18}>
-        {context.currentProject?.name}
-      </Text>
+      {/* <Text color="black" anchorX="center" anchorY="middle" fontSize={0.1}>
+        {context.currentProject?.title}
+      </Text> */}
     </animated.group>
   );
 };

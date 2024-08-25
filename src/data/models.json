@@ -1,50 +1,203 @@
 [
   {
-    "name": "bbc",
+    "name": "reims",
+    "title": "Musée des Beaux-Arts de Reims",
+    "href": "https://digital.okan3d.com/P_9297_Reims_Scan/P_9297_Reims_Scan/",
     "positionX": 0,
-    "positionY": -0.2,
+    "positionY": 0.18,
     "positionZ": 0,
-    "scale": 0.7,
-    "groupPosition": [0, -1, 0]
+    "scale": 0.02,
+    "groupPosition": [
+      0,
+      -1,
+      0
+    ],
+    "technos": [
+      "react",
+      "threejs",
+      "r3f",
+      "blender"
+    ],
+    "texts": [
+      "Mes collaborateurs d'Okénite se sont rendus au musée de Reims afin de procéder à des scans de certaines de leurs oeuvres. Ces scans ont ensuite été retravaillés par les infographistes afin d'atteindre le rendu le plus réaliste possible. J'ai ensuite été chargé d'intégrer ces modèles sur un site de consultation, qui a vocation à être intégré au site du Musée. L'url est personnalisable : en y indiquant le nom de l'oeuvre, on peut ouvrir une version du viewer ou n'est displonible que le modèle correspondant. Ce projet m'a permis de travailler sur des modèles très détaillés, et de découvrir des techniques de modélisation très poussées. J'ai aussi appris à optimiser les scènes 3D, en collaboration avec les infographistes, afin de garantir un rendu fluide et fidèle aux conditions d'exposition des objets réels."
+    ],
+    "with": [
+      "Okénite"
+    ],
+    "for": [
+      "Le Musée des Beaux-Arts de Reims"
+    ],
+    "role": "développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D"
+    ]
   },
   {
-    "name": "resurection",
+    "name": "england",
+    "title": "Carte stylisée",
+    "href": null,
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
-    "scale": 0.001,
-    "groupPosition": [-1, 1, 0]
+    "scale": 0.4,
+    "groupPosition": [
+      -1,
+      1,
+      0
+    ],
+    "technos": [
+      "react",
+      "threejs",
+      "r3f",
+      "blender"
+    ],
+    "texts": [
+      "Il s'agit d'une carte stylisée d'un domaine du Kent, en Angleterre. L'objectif était de donner à cette carte modélisée en 3D un aspect dessiné à l'encre et du mouvement dans ses éléments, comme sous l'effet du vent. Ce résultat a pu être obtenu grâce à des shaders, conçus avec l'aide de NodeToy."
+    ],
+    "with": [
+      "Okénite"
+    ],
+    "for": [
+      "Cetim"
+    ],
+    "role": "Développeur",
+    "tasks": [
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D",
+      "Composition de la scène"
+    ]
   },
   {
-    "name": "tete_lauree_std",
+    "name": "koopashooter",
+    "title": "Koopa Shooter",
+    "href": "https://koopa-shooter.vercel.app/",
+    "positionX": 0,
+    "positionY": 0,
+    "positionZ": 0,
+    "scale": 0.07,
+    "groupPosition": [
+      -2,
+      1,
+      0
+    ],
+    "technos": [
+      "threejs"
+    ],
+    "texts": [
+      "Un petit jeu en 3D réalisé en Three.js. Le but est simple : on se déplace avec le clavier et on tire sur les koopas qui volent un peu partout à travers la scène. J'ai réalisé ce jeu afin de me familisariser avec Three.js, à l'époque où j'en apprenais les bases."
+    ],
+    "role": "développeur",
+    "tasks": [
+      "Développement du jeu",
+      "Développement des interactions 3D"
+    ]
+  },
+  {
+    "name": "configurateur",
+    "title": "GLB Color Config",
+    "href": "https://glb-color-config.vercel.app/?list=demo",
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
     "scale": 0.3,
-    "groupPosition": [-2, 1, 0]
-  },
-  {
-    "name": "chaussure",
-    "positionX": 0,
-    "positionY": 0,
-    "positionZ": 0,
-    "scale": 0.3,
-    "groupPosition": [1, 1, 0]
+    "groupPosition": [
+      1,
+      1,
+      0
+    ],
+    "technos": [
+      "react",
+      "threejs",
+      "r3f",
+      "blender"
+    ],
+    "texts": [
+      "Dans le cadre du projet de Jumeau Numérique, j'ai été amené à développer un outil de colorisation des éléments de la 3D. En effet, l'extrême diversité des équipements représentés sur les maquettes 3D de l'usine nécessitait un tri très chronophage. Flexible, cet outil qui permet de coloriser les éléments de la scène en un clic et d'enregistrer les modifications dans un fichier JSON a été pensé pour être utilisé avec n'importe quel modèle 3D, ainsi qu'avec des listes prédéfinies de modèles, en fonction des besoins."
+    ],
+    "with": [
+      "Okénite"
+    ],
+    "role": "développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D"
+    ]
   },
   {
     "name": "boinaud",
+    "title": "Jumeau numérique usine de cognac",
+    "href": null,
     "positionX": 0,
     "positionY": -0.1,
     "positionZ": 0,
-    "scale": 0.009,
-    "groupPosition": [1, 1, 0]
+    "scale": 3,
+    "groupPosition": [
+      1,
+      1,
+      0
+    ],
+    "technos": [
+      "react",
+      "threejs",
+      "r3f",
+      "blender"
+    ],
+    "texts": [
+      "Le jumeau numérique est une reproduction quasi intégrale d'une usine de cognac du sud de la France. Il permet de représenter et de contrôler l'activité de l'usine en temps réel, grâce à des capteurs sur place connectés à la maquette 3D. Il centralise les données de l'usine, et permet de les consulter de manière interactive.",
+      "En binôme avec un autre développeur, nous nous sommes chargés de l'intrégration des maquettes 3D, de la mise en place des interactions 3D, et de la communication avec l'API de l'usine. Grâce aux capteurs, l'usine virtuelle est capable de reproduire en temps réel l'activité de l'usine réelle."
+    ],
+    "with": [
+      "Okénite",
+      "The WiW"
+    ],
+    "for": [
+      "Cetim"
+    ],
+    "role": "co-développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D",
+      "Intégration de la communication avec l'API"
+    ]
   },
   {
     "name": "cetim",
+    "title": "Mini jumeau numérique",
+    "href": null,
     "positionX": 0.1,
-    "positionY": -0.25,
+    "positionY": 0,
     "positionZ": 0,
-    "scale": 0.18,
-    "groupPosition": [1, 1, 0]
+    "scale": 0.5,
+    "groupPosition": [
+      1,
+      1,
+      0
+    ],
+    "technos": [
+      "react",
+      "threejs",
+      "r3f",
+      "blender"
+    ],
+    "texts": [
+      "Le mini jumeau numérique fonctionne de la même manière que le jumeau numérique de l'usine de cognac, mais pour un autre client et sur une seule machine. On peut y voir en temps réel les données de la machine."
+    ],
+    "with": [
+      "Okénite",
+      "The WiW"
+    ],
+    "for": [
+      "Cetim"
+    ],
+    "role": "développeur",
+    "tasks": [
+      "Développement de l'interface",
+      "Intégration des modèles 3D",
+      "Développement des interactions 3D",
+      "Intégration de la communication avec l'API"
+    ]
   }
 ]

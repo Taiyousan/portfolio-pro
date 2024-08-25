@@ -20,6 +20,9 @@ export function AppContextProvider({ children }) {
 
   // states
   const [currentProject, setCurrentProject] = useState(null);
+  const [canMoveCamera, setCanMoveCamera] = useState(false);
+  const [isCards, setIsCards] = useState(false);
+  const [isCubes, setIsCubes] = useState(true);
 
   // effects
 
@@ -31,6 +34,7 @@ export function AppContextProvider({ children }) {
 
   const outOfFocus = () => {
     setAllRotatingCubes(true);
+    setIsCubes(true);
     resetCamera();
   };
 
@@ -44,6 +48,12 @@ export function AppContextProvider({ children }) {
     currentProject,
     setCurrentProject,
     outOfFocus,
+    canMoveCamera,
+    setCanMoveCamera,
+    isCards,
+    setIsCards,
+    isCubes,
+    setIsCubes,
   };
 
   return (

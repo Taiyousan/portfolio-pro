@@ -5,17 +5,19 @@ import { useSpring, animated } from "@react-spring/three";
 import * as THREE from "three";
 import { useControls } from "leva";
 
-import Model from "./Model";
 import { useFrame } from "@react-three/fiber";
 
 import { useAppContext } from "../context/store";
 
 export default function Cube(props) {
-  let model = useGLTF(`models/${props.model.name}.glb`);
+  let model = useGLTF(`projects/${props.model.name}/model.glb`);
   const cube = useGLTF("models/cube.glb");
   const context = useAppContext();
 
   const cubeGroup = useRef();
+  const modelRef = useRef();
+
+  const randomStartRotationFactor = useMemo(() => Math.random(), []);
 
   const [active, setActive] = useState(false);
   const [isRotating, setIsRotating] = useState(true);
@@ -83,6 +85,17 @@ export default function Cube(props) {
     transparent: true,
   });
 
+  const bottleMaterial = new THREE.MeshPhysicalMaterial({
+    transmission: 1.0,
+    thickness: 0.1,
+    roughness: 0,
+    clearcoat: 0.2,
+    clearcoatRoughness: 0.1,
+    envMapIntensity: 0.2,
+    color: new THREE.Color(0xffffff),
+    transparent: true,
+  });
+
   // Génère des vitesses de rotation aléatoires une seule fois par cube
   const rotationSpeeds = useMemo(
     () => ({
@@ -97,6 +110,7 @@ export default function Cube(props) {
   );
 
   // Store the initial rotation quaternion
+
   const initialRotation = useMemo(() => new THREE.Quaternion(), []);
 
   const [rotationSpeedFactor, setRotationSpeedFactor] = useState(1);
@@ -115,29 +129,34 @@ export default function Cube(props) {
   });
 
   useEffect(() => {
-    if (context.allRotatingCubes) {
+    if (context.isCubes) {
       setClicked(false);
-      setActive(true);
-    } else if (!context.allRotatingCubes && !clicked) {
+      setTimeout(() => {
+        setActive(true);
+      }, props.delay);
+    } else if (!context.isCubes && !clicked) {
       setActive(false);
-    } else if (!context.allRotatingCubes && clicked) {
-      setActive(true);
+    } else if (!context.isCubes && clicked) {
+      setTimeout(() => {
+        setActive(true);
+      }, props.delay);
     }
-  }, [context.allRotatingCubes]);
+  }, [context.isCubes]);
 
   const handleClick = () => {
     if (!clicked) {
       setClicked(true);
       recentrer();
-      focusOnCube();
       let currentProject = props.model;
       currentProject.focusGroupPosition = props.groupPosition;
       context.setCurrentProject(currentProject);
     }
   };
+
   const easeOutQuad = (t) => t * (2 - t);
 
   const handleHover = () => {
+    if (clicked) return;
     setRotationSpeedFactor(30);
 
     // Déclenche la diminution progressive après un délai de 2 secondes
@@ -169,22 +188,39 @@ export default function Cube(props) {
   const recentrer = () => {
     // setIsRotating(false);
     context.setAllRotatingCubes(false);
+    context.setIsCubes(false);
   };
 
   const focusOnCube = () => {
-    context.cameraControlsRef.current?.setPosition(
-      props.groupPosition[0],
-      props.groupPosition[1],
-      2,
-      true
-    );
-    context.cameraControlsRef.current?.setTarget(
-      props.groupPosition[0],
-      props.groupPosition[1],
-      props.groupPosition[2],
-      true
-    );
+    if (context.cameraControlsRef.current) {
+      context.cameraControlsRef.current.setPosition(
+        props.groupPosition[0],
+        props.groupPosition[1],
+        2,
+        true
+      );
+      context.cameraControlsRef.current.setTarget(
+        props.groupPosition[0],
+        props.groupPosition[1],
+        props.groupPosition[2],
+        true
+      );
+    }
   };
+
+  useEffect(() => {
+    if (clicked && context.cameraControlsRef.current) {
+      focusOnCube();
+    }
+  }, [clicked, context.cameraControlsRef.current]);
+
+  useEffect(() => {
+    modelRef.current.traverse((child) => {
+      if (child.isMesh && child.name === "Body1003") {
+        child.material = bottleMaterial;
+      }
+    });
+  }, [modelRef.current]);
 
   return (
     <Float
@@ -201,9 +237,16 @@ export default function Cube(props) {
         position-x={props.groupPosition[0]}
         position-y={positionY}
         position-z={props.groupPosition[2]}
+        // rotation-x={Math.random() * Math.PI * 0.001}
         onPointerEnter={() => {
           if (!clicked) handleHover();
         }}
+        onClick={handleClick}
+        rotation={[
+          (Math.PI / 2) * randomStartRotationFactor,
+          (Math.PI / 2) * randomStartRotationFactor,
+          (Math.PI / 2) * randomStartRotationFactor,
+        ]}
       >
         <animated.mesh
           castShadow
@@ -211,7 +254,6 @@ export default function Cube(props) {
           geometry={cube.nodes.Cube.geometry}
           material={glassMaterial}
           scale={cubeScale}
-          onClick={handleClick}
           // onPointerEnter={handleHover}
           // onPointerLeave={handleUnhover}
         />
@@ -221,8 +263,17 @@ export default function Cube(props) {
           position-y={props.model.positionY}
           position-x={props.model.positionX}
           position-z={props.model.positionZ}
+          ref={modelRef}
         />
       </animated.group>
     </Float>
   );
 }
+
+useGLTF.preload("models/cube.glb");
+useGLTF.preload("projects/boinaud/model.glb");
+useGLTF.preload("projects/cetim/model.glb");
+useGLTF.preload("projects/koopashooter/model.glb");
+useGLTF.preload("projects/reims/model.glb");
+useGLTF.preload("projects/england/model.glb");
+useGLTF.preload("projects/configurateur/model.glb");

@@ -1,0 +1,137 @@
+[
+  {
+    "title": "Compétences",
+    "cornerImg": "skills.png",
+    "position": [
+      -6,
+      0,
+      -2
+    ],
+    "color": "#2A7F62",
+    "list": [
+      {
+        "content": "React",
+        "img": "react.png"
+      },
+      {
+        "content": "Vue",
+        "img": "vuejs.png"
+      },
+      {
+        "content": "Three.js",
+        "img": "threejs.png"
+      },
+      {
+        "content": "React Three Fiber",
+        "img": "r3f.png"
+      },
+      {
+        "content": "Symfony",
+        "img": "symfony.png"
+      },
+      {
+        "content": "Blender",
+        "img": "blender.png"
+      }
+    ]
+  },
+  {
+    "title": "Études",
+    "cornerImg": "studies.png",
+    "position": [
+      -3,
+      0,
+      -2
+    ],
+    "color": "#005d8f",
+    "list": [
+      {
+        "content": "Licence de Lettres Université Lyon III",
+        "img": "lyon3.png"
+      },
+      {
+        "content": "BUT MMI",
+        "img": "mmi.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Moi",
+    "cornerImg": "shams.png",
+    "position": [
+      0,
+      0,
+      -2
+    ],
+    "color": "#252525",
+    "list": [
+      {
+        "content": "26 years old",
+        "img": "age.png"
+      },
+      {
+        "content": "Troyes, France",
+        "img": "home.png"
+      }
+    ]
+  },
+  {
+    "title": "Hobbies",
+    "cornerImg": "hobbies.png",
+    "position": [
+      3,
+      0,
+      -2
+    ],
+    "color": "#EF233C",
+    "list": [
+      {
+        "content": "Caravan Palace",
+        "img": "music.png"
+      },
+      {
+        "content": "The Binding of Isaac",
+        "img": "games.png"
+      },
+      {
+        "content": "Slay The Spire",
+        "img": "games.png"
+      },
+      {
+        "content": "L'Assassin Royal",
+        "img": "book.png"
+      },
+      {
+        "content": "Tennis de table",
+        "img": "sport.png"
+      }
+    ]
+  },
+  {
+    "title": "Contacts",
+    "cornerImg": "contact.png",
+    "position": [
+      6,
+      0,
+      -2
+    ],
+    "color": "#CC59D2",
+    "list": [
+      {
+        "content": "LinkedIn",
+        "href": "https://www.linkedin.com/in/shams-benhamou-07a385161/",
+        "img": "linkedin.png"
+      },
+      {
+        "content": "Mail",
+        "href": "mailto:shamsbdev@gmail.com",
+        "img": "mail.png"
+      },
+      {
+        "content": "Github",
+        "href": "https://github.com/Taiyousan",
+        "img": "github.png"
+      }
+    ]
+  }
+]
