@@ -7,6 +7,7 @@ import {
   Html,
   Resize,
   useGLTF,
+  useVideoTexture,
 } from "@react-three/drei";
 import { Suspense, useRef, useEffect, useState } from "react";
 import { useAppContext } from "../context/store";
@@ -80,6 +81,28 @@ export default function Scene() {
     }
   }, [context.isCards]);
 
+  // videoTexture
+  const boinaudVideo = useVideoTexture(`projects/boinaud/video.mp4`, { update: true, loop: true });
+  const cetimVideo = useVideoTexture(`projects/cetim/video.mp4`, { update: true, loop: true });
+  const englandVideo = useVideoTexture(`projects/england/video.mp4`, { update: true, loop: true });
+  const reimsVideo = useVideoTexture(`projects/reims/video.mp4`, { update: true, loop: true });
+  const koopashooterVideo = useVideoTexture(`projects/koopashooter/video.mp4`, { update: true, loop: true });
+  const configurateurVideo = useVideoTexture(`projects/configurateur/video.mp4`, { update: true, loop: true });
+
+  const videos = { "boinaud": boinaudVideo, "cetim": cetimVideo, "england": englandVideo, "reims": reimsVideo, "koopashooter": koopashooterVideo, "configurateur": configurateurVideo };
+
+  useEffect(() => {
+    if (context.currentProject) {
+      const videoTexture = videos[context.currentProject.name];
+
+      if (videoTexture?.image) {
+        // Reset the video to the beginning
+        videoTexture.image.currentTime = 0;
+        videoTexture.image.play();
+      }
+    }
+  }, [context.currentProject, videos]);
+
   return (
     <>
       <ambientLight intensity={0.5} />
@@ -105,7 +128,7 @@ export default function Scene() {
       {context.currentProject && (
         <>
           <Title />
-          <Thumb />
+          <Thumb videoTexture={videos[context.currentProject.name]} />
         </>
       )}
       <AboutButton />

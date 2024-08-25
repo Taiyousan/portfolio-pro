@@ -1,8 +1,12 @@
 [
   {
-    "title": "Skills",
+    "title": "Compétences",
     "cornerImg": "skills.png",
-    "position": [-6, 0, -2],
+    "position": [
+      -6,
+      0,
+      -2
+    ],
     "color": "#2A7F62",
     "list": [
       {
@@ -32,9 +36,13 @@
     ]
   },
   {
-    "title": "Studies",
+    "title": "Études",
     "cornerImg": "studies.png",
-    "position": [-3, 0, -2],
+    "position": [
+      -3,
+      0,
+      -2
+    ],
     "color": "#005d8f",
     "list": [
       {
@@ -48,9 +56,13 @@
     ]
   },
   {
-    "title": "Who am I ?",
+    "title": "Moi",
     "cornerImg": "shams.png",
-    "position": [0, 0, -2],
+    "position": [
+      0,
+      0,
+      -2
+    ],
     "color": "#252525",
     "list": [
       {
@@ -66,7 +78,11 @@
   {
     "title": "Hobbies",
     "cornerImg": "hobbies.png",
-    "position": [3, 0, -2],
+    "position": [
+      3,
+      0,
+      -2
+    ],
     "color": "#EF233C",
     "list": [
       {
@@ -91,11 +107,14 @@
       }
     ]
   },
-
   {
-    "title": "Get in touch",
+    "title": "Contacts",
     "cornerImg": "contact.png",
-    "position": [6, 0, -2],
+    "position": [
+      6,
+      0,
+      -2
+    ],
     "color": "#CC59D2",
     "list": [
       {

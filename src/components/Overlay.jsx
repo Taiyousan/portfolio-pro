@@ -36,6 +36,7 @@ export default function Overlay() {
           </div>
         )}
         {context.currentProject && <Project />}
+        <div className="mentions">Shams Benhamou - 2024</div>
       </div>
     </>
   );

@@ -13,6 +13,8 @@
     overflow-y: auto;
     pointer-events: auto;
 
+
+
     .project-content {
         opacity: 1;
         width: 90%;
@@ -23,20 +25,33 @@
         flex-direction: column;
         padding: 1em;
         position: relative;
+
         .project-title {
             font-size: 3em;
             margin: 1em;
             letter-spacing: 0.1em;
         }
+
         .project-text {
             font-size: 1.1em;
             // text-align: center;
             // margin: 1em;
             margin-left: 1em;
+
             &:last-of-type {
-                padding-bottom: 8em;
+                // padding-bottom: 8em;
             }
         }
+
+        .warning {
+            font-size: 0.7em;
+            color: pink;
+            // text-align: center;
+            // margin: 1em;
+            margin-left: 1em;
+            padding-bottom: 8em;
+        }
+
         .tag {
             background-color: #2d2d2d;
             width: 90%;
@@ -54,6 +69,28 @@
                 margin-left: 0.1em;
                 transform: translateY(7%);
             }
+
+            &.href {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                a {
+                    background-color: white;
+                    color: #000000;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: color 0.2s;
+                    padding: .6em;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: 0.1s;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
         }
 
         .technos {
@@ -64,6 +101,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
             img {
                 height: 2em;
                 margin: 1em;
@@ -88,6 +126,7 @@
             // margin-bottom: 0.5em;
             opacity: 0;
             transition: opacity 0.2s;
+
             &.active {
                 opacity: 1;
             }
@@ -147,6 +186,7 @@
     justify-content: center;
     align-items: center;
     z-index: 2;
+
     img {
         width: 1em;
         height: 1em;

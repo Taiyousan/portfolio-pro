@@ -67,7 +67,6 @@ const CardFront = ({ data }) => {
   );
 };
 const CardBack = ({ data, setCurrentCard }) => {
-  console.log("data", data);
 
   return (
     <Html

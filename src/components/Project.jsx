@@ -46,7 +46,8 @@ export default function Project() {
 
   const handleScroll = (e) => {
     const bottom =
-      e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+      e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 1;
+
     if (bottom) {
       setReachedBottom(true);
     } else {
@@ -74,6 +75,15 @@ export default function Project() {
       >
         <div className="project-content">
           <h1 className="project-title">{context.currentProject.title}</h1>
+          {context.currentProject.href && (
+            <div className="tag href"><a
+              href={context.currentProject.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Visiter
+            </a></div>
+          )}
           {context.currentProject.with && (
             <div className="tag with">
               avec{" "}
@@ -85,6 +95,8 @@ export default function Project() {
               ))}
             </div>
           )}
+
+
 
           {context.currentProject.role && (
             <div className="tag role">
@@ -128,8 +140,12 @@ export default function Project() {
               {text}
             </p>
           ))}
+          <p className="warning">Les modèles 3D utilisés sur ce portfolio sont issus de sources en ligne et sont libres de droit.</p>
+
         </div>
       </div>
+      <p className="warning">Les modèles 3D utilisés sur ce portfolio sont issus de sources en ligne et sont libres de droit.</p>
+
     </>
   );
 }
