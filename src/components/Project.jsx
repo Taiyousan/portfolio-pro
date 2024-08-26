@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useAppContext } from "../context/store";
 
+import projectsData from "../data/models.json";
+
 export default function Project() {
   const context = useAppContext();
   const projectRef = useRef(null);
@@ -54,6 +56,48 @@ export default function Project() {
       setReachedBottom(false);
     }
   };
+
+  useEffect(() => {
+    const bloc = document.querySelector(".project-text");
+
+    // chercher un mot dans bloc
+    const findWord = (word) => {
+      const regex = new RegExp(word, "gi");
+      const match = bloc.innerText.match(regex);
+      if (match) {
+        const index = bloc.innerText.indexOf(match[0]);
+        return index;
+      }
+      return -1;
+    };
+
+    const array = { "jumeau-numerique": "Jumeau numérique", "reims": "Reims" };
+
+    // surligner un mot dans bloc
+    const highlightWord = (word) => {
+      const index = findWord(word);
+      if (index !== -1) {
+        const newBloc = bloc.innerText.replace(
+          word,
+          `<span class="redirect" onClick=(handleTest)><img src="img/icons/redirect.png" alt="" />${array[word.replace("redirect-", "")]}</span>`
+        );
+        bloc.innerHTML = newBloc;
+      }
+    };
+
+    highlightWord("redirect-jumeau-numerique");
+  }, [context.currentProject]);
+
+  const handleTest = () => {
+    console.log("test");
+    context.outOfFocus();
+    setTimeout(() => {
+      let currentProject = projectsData[0];
+      currentProject.focusGroupPosition = currentProject.groupPosition;
+      context.setCurrentProject(currentProject);
+    }, 500);
+  };
+
   return (
     <>
       <div className="close" onClick={context.outOfFocus}>

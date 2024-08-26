@@ -153,6 +153,12 @@ export default function Cube(props) {
     }
   };
 
+  useEffect(() => {
+    if (context.currentProject === props.model) {
+      handleClick();
+    }
+  }, [context.currentProject]);
+
   const easeOutQuad = (t) => t * (2 - t);
 
   const handleHover = () => {
@@ -254,8 +260,8 @@ export default function Cube(props) {
           geometry={cube.nodes.Cube.geometry}
           material={glassMaterial}
           scale={cubeScale}
-          // onPointerEnter={handleHover}
-          // onPointerLeave={handleUnhover}
+        // onPointerEnter={handleHover}
+        // onPointerLeave={handleUnhover}
         />
         <primitive
           object={model.scene}
