@@ -38,6 +38,17 @@
             // margin: 1em;
             margin-left: 1em;
 
+            .redirect {
+                color: #ffa4a4;
+                font-weight: bold;
+                cursor: pointer;
+
+                img {
+                    height: .8em;
+                    margin-right: .5em;
+                }
+            }
+
             &:last-of-type {
                 // padding-bottom: 8em;
             }

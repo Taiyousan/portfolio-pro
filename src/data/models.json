@@ -19,7 +19,7 @@
       "blender"
     ],
     "texts": [
-      "Mes collaborateurs d'Okénite se sont rendus au musée de Reims afin de procéder à des scans de certaines de leurs oeuvres. Ces scans ont ensuite été retravaillés par les infographistes afin d'atteindre le rendu le plus réaliste possible. J'ai ensuite été chargé d'intégrer ces modèles sur un site de consultation, qui a vocation à être intégré au site du Musée. L'url est personnalisable : en y indiquant le nom de l'oeuvre, on peut ouvrir une version du viewer ou n'est displonible que le modèle correspondant. Ce projet m'a permis de travailler sur des modèles très détaillés, et de découvrir des techniques de modélisation très poussées. J'ai aussi appris à optimiser les scènes 3D, en collaboration avec les infographistes, afin de garantir un rendu fluide et fidèle aux conditions d'exposition des objets réels."
+      "Un viewer de modèles 3D pour un musée de Reims. Les modèles 3D sont en fait des reproductions d'une très haute précision, grâce à des scans qui ont été effectués sur place sur les pièces du musées et retravaillés ensuite par les infographistes d'Okénite. Destiné à être intégré sur le site du musée, le viewer est doté d'une url personnalisable, qui permet de partager un lien direct vers une pièce en particulier."
     ],
     "with": [
       "Okénite"
@@ -61,7 +61,7 @@
     "for": [
       "Cetim"
     ],
-    "role": "Développeur",
+    "role": "développeur",
     "tasks": [
       "Intégration des modèles 3D",
       "Développement des interactions 3D",
@@ -113,7 +113,7 @@
       "blender"
     ],
     "texts": [
-      "Dans le cadre du projet de Jumeau Numérique, j'ai été amené à développer un outil de colorisation des éléments de la 3D. En effet, l'extrême diversité des équipements représentés sur les maquettes 3D de l'usine nécessitait un tri très chronophage. Flexible, cet outil qui permet de coloriser les éléments de la scène en un clic et d'enregistrer les modifications dans un fichier JSON a été pensé pour être utilisé avec n'importe quel modèle 3D, ainsi qu'avec des listes prédéfinies de modèles, en fonction des besoins."
+      "Dans le cadre du projet de redirect-jumeau-numerique, j'ai été amené à développer un outil de colorisation des éléments de la 3D. En effet, l'extrême diversité des équipements représentés sur les maquettes 3D de l'usine nécessitait un tri très chronophage. Flexible, cet outil qui permet de coloriser les éléments de la scène en un clic et d'enregistrer les modifications dans un fichier JSON a été pensé pour être utilisé avec n'importe quel modèle 3D au format .glb, ainsi qu'avec des listes prédéfinies de modèles, en fonction des besoins."
     ],
     "with": [
       "Okénite"
@@ -183,7 +183,7 @@
       "blender"
     ],
     "texts": [
-      "Le mini jumeau numérique fonctionne de la même manière que le jumeau numérique de l'usine de cognac, mais pour un autre client et sur une seule machine. On peut y voir en temps réel les données de la machine."
+      "Le mini jumeau numérique fonctionne de la même manière que le redirect-jumeau-numerique de l'usine de cognac, mais pour un autre client et sur une seule machine. On peut y voir en temps réel les données de la machine, et avoir un aperçu d'un seul coup d'oeil de l'état de ses composants."
     ],
     "with": [
       "Okénite",

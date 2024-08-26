@@ -66,12 +66,16 @@
     "color": "#252525",
     "list": [
       {
-        "content": "26 years old",
+        "content": "26 ans",
         "img": "age.png"
       },
       {
         "content": "Troyes, France",
         "img": "home.png"
+      },
+      {
+        "content": "Développeur Front-End",
+        "img": "code.png"
       }
     ]
   },

@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useAppContext } from "../context/store";
 
+import projectsData from "../data/models.json";
+
 export default function Project() {
   const context = useAppContext();
   const projectRef = useRef(null);
@@ -54,6 +56,61 @@ export default function Project() {
       setReachedBottom(false);
     }
   };
+
+  const handleTest = () => {
+    context.outOfFocus();
+    setTimeout(() => {
+      context.setAllRotatingCubes(false)
+      let currentProject = projectsData[4];
+      currentProject.focusGroupPosition = currentProject.groupPosition;
+      context.setCurrentProject(currentProject);
+    }, 500);
+  };
+
+  useEffect(() => {
+    // !!!!!!
+    // Pour l'instant, ça ne fonctionne que pour rediriger vers le projet "Jumeau numérique". Il faudra adapter pour les autres projets.
+    // !!!!!!
+
+    const bloc = document.querySelector(".project-text");
+
+    // Chercher un mot dans bloc
+    const findWord = (word) => {
+      const regex = new RegExp(word, "gi");
+      const match = bloc.innerText.match(regex);
+      if (match) {
+        const index = bloc.innerText.indexOf(match[0]);
+        return index;
+      }
+      return -1;
+    };
+
+    const array = { "jumeau-numerique": "Jumeau numérique", "reims": "Reims" };
+
+    // Surligner un mot dans bloc
+    const highlightWord = (word) => {
+      const index = findWord(word);
+      if (index !== -1) {
+        const newBloc = bloc.innerText.replace(
+          word,
+          `<span class="redirect" data-word="${word.replace('redirect-', '')}"><img src="img/icons/redirect.png" alt="" />${array[word.replace("redirect-", "")]}</span>`
+        );
+        bloc.innerHTML = newBloc;
+
+        // Ajouter un gestionnaire d'événements pour le nouveau span
+        const span = bloc.querySelector('.redirect');
+        if (span) {
+          span.addEventListener('click', handleTest);
+        }
+      }
+    };
+
+    highlightWord("redirect-jumeau-numerique");
+  }, [context.currentProject]);
+
+
+
+
   return (
     <>
       <div className="close" onClick={context.outOfFocus}>
