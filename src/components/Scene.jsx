@@ -132,7 +132,7 @@ export default function Scene() {
         </>
       )}
       <AboutButton />
-      {context.currentProject === null && <Cards />}
+      {context.currentProject === null && <group scale={.9}><Cards /></group>}
       {models.map((model, index) => {
         // if (index > 4) return null;
 
