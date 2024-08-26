@@ -155,6 +155,7 @@ const Card = ({ data, index, currentCard, setCurrentCard }) => {
 
   return (
     <Float
+      enabled={true} // Enable or disable the floating effect, defaults to true
       speed={1} // Animation speed, defaults to 1
       rotationIntensity={1} // XYZ rotation intensity, defaults to 1
       floatIntensity={0.1} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
