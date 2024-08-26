@@ -61,7 +61,7 @@
     "for": [
       "Cetim"
     ],
-    "role": "Développeur",
+    "role": "développeur",
     "tasks": [
       "Intégration des modèles 3D",
       "Développement des interactions 3D",
@@ -113,7 +113,7 @@
       "blender"
     ],
     "texts": [
-      "Dans le cadre du projet de redirect-jumeau-numerique. j'ai été amené à développer un outil de colorisation des éléments de la 3D. En effet, l'extrême diversité des équipements représentés sur les maquettes 3D de l'usine nécessitait un tri très chronophage. Flexible, cet outil qui permet de coloriser les éléments de la scène en un clic et d'enregistrer les modifications dans un fichier JSON a été pensé pour être utilisé avec n'importe quel modèle 3D, ainsi qu'avec des listes prédéfinies de modèles, en fonction des besoins."
+      "Dans le cadre du projet de redirect-jumeau-numerique, j'ai été amené à développer un outil de colorisation des éléments de la 3D. En effet, l'extrême diversité des équipements représentés sur les maquettes 3D de l'usine nécessitait un tri très chronophage. Flexible, cet outil qui permet de coloriser les éléments de la scène en un clic et d'enregistrer les modifications dans un fichier JSON a été pensé pour être utilisé avec n'importe quel modèle 3D, ainsi qu'avec des listes prédéfinies de modèles, en fonction des besoins."
     ],
     "with": [
       "Okénite"

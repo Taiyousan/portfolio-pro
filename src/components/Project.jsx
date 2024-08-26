@@ -57,10 +57,24 @@ export default function Project() {
     }
   };
 
+  const handleTest = () => {
+    context.outOfFocus();
+    setTimeout(() => {
+      context.setAllRotatingCubes(false)
+      let currentProject = projectsData[4];
+      currentProject.focusGroupPosition = currentProject.groupPosition;
+      context.setCurrentProject(currentProject);
+    }, 500);
+  };
+
   useEffect(() => {
+    // !!!!!!
+    // Pour l'instant, ça ne fonctionne que pour rediriger vers le projet "Jumeau numérique". Il faudra adapter pour les autres projets.
+    // !!!!!!
+
     const bloc = document.querySelector(".project-text");
 
-    // chercher un mot dans bloc
+    // Chercher un mot dans bloc
     const findWord = (word) => {
       const regex = new RegExp(word, "gi");
       const match = bloc.innerText.match(regex);
@@ -73,30 +87,29 @@ export default function Project() {
 
     const array = { "jumeau-numerique": "Jumeau numérique", "reims": "Reims" };
 
-    // surligner un mot dans bloc
+    // Surligner un mot dans bloc
     const highlightWord = (word) => {
       const index = findWord(word);
       if (index !== -1) {
         const newBloc = bloc.innerText.replace(
           word,
-          `<span class="redirect" onClick=(handleTest)><img src="img/icons/redirect.png" alt="" />${array[word.replace("redirect-", "")]}</span>`
+          `<span class="redirect" data-word="${word.replace('redirect-', '')}"><img src="img/icons/redirect.png" alt="" />${array[word.replace("redirect-", "")]}</span>`
         );
         bloc.innerHTML = newBloc;
+
+        // Ajouter un gestionnaire d'événements pour le nouveau span
+        const span = bloc.querySelector('.redirect');
+        if (span) {
+          span.addEventListener('click', handleTest);
+        }
       }
     };
 
     highlightWord("redirect-jumeau-numerique");
   }, [context.currentProject]);
 
-  const handleTest = () => {
-    console.log("test");
-    context.outOfFocus();
-    setTimeout(() => {
-      let currentProject = projectsData[0];
-      currentProject.focusGroupPosition = currentProject.groupPosition;
-      context.setCurrentProject(currentProject);
-    }, 500);
-  };
+
+
 
   return (
     <>
