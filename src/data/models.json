@@ -2,7 +2,7 @@
   {
     "name": "reims",
     "title": "Musée des Beaux-Arts de Reims",
-    "href": "https://digital.okan3d.com/P_9297_Reims_Scan/P_9297_Reims_Scan/",
+    "href": "",
     "positionX": 0,
     "positionY": 0.18,
     "positionZ": 0,
@@ -96,7 +96,7 @@
   {
     "name": "configurateur",
     "title": "GLB Color Config",
-    "href": "https://glb-color-config.vercel.app/?list=demo",
+    "href": "",
     "positionX": 0,
     "positionY": 0,
     "positionZ": 0,
